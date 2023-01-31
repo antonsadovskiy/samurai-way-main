@@ -22,7 +22,18 @@ const Profile = () => {
                     <span className={set.status}>Status: Work hard, play harder</span>
                 </div>
             </div>
-            <span>posts</span>
+
+            <div className={set.postsContainer}>
+                New Post
+                <div className={set.posts}>
+                    <div className={set.item}>
+                        post 1
+                    </div>
+                    <div className={set.item}>
+                        post 2
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
