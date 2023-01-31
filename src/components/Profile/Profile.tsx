@@ -2,12 +2,13 @@ import React from "react";
 import set from "./Profile.module.css"
 import backgroundImage from "../../asssets/images/156963-anime-art-oblako-atmosfera-mir-1920x1080 (1).jpg"
 import avatar from "../../asssets/images/ava.jpg"
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = () => {
     return (
         <div className={set.profileContainer}>
             <div className={set.backgroundImage}>
-                <img src={backgroundImage} alt={"background image"}/>
+                {/*<img src={backgroundImage} alt={"background image"}/>*/}
             </div>
             <div className={set.aboutContainer}>
                 <div className={set.avatar}>
@@ -22,18 +23,7 @@ const Profile = () => {
                     <span className={set.status}>Status: Work hard, play harder</span>
                 </div>
             </div>
-
-            <div className={set.postsContainer}>
-                New Post
-                <div className={set.posts}>
-                    <div className={set.item}>
-                        post 1
-                    </div>
-                    <div className={set.item}>
-                        post 2
-                    </div>
-                </div>
-            </div>
+            <MyPosts />
         </div>
     );
 }
