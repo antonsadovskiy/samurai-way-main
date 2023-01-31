@@ -5,12 +5,16 @@
     background-color: deepskyblue;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
 
-.navbarContainer a {
+.item {
     text-decoration: none;
     color: black;
+}
+
+.active {
+    color: darkblue;
 }
