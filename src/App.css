@@ -1,0 +1,12 @@
+.App {
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contentContainer {
+    display: flex;
+    gap: 5px;
+}
