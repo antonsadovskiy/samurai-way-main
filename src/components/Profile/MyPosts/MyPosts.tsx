@@ -12,9 +12,9 @@ const MyPosts = () => {
                 </div>
             </div>
             <div className={set.posts}>
-                <Post />
-                <Post />
-                <Post />
+                <Post message={"This is my first post!"} likes={30}/>
+                <Post message={"How are you doing today?"} likes={53}/>
+                <Post message={"I'm busy"} likes={21}/>
             </div>
         </div>
     );
