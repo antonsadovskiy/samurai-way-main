@@ -1,11 +1,10 @@
 import React from "react";
+import set from "./Header.module.css"
 
-function Header() {
+const Header = () => {
     return (
-        <div>
-            <a href="#">Home</a>
-            <a href="#">News Feed</a>
-            <a href="#">Messages</a>
+        <div className={set.headerContainer}>
+            <h3>всенаместе</h3>
         </div>
     );
 }
