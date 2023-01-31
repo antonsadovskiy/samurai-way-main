@@ -15,9 +15,11 @@ const Profile = () => {
                 </div>
                 <div className={set.about}>
                     <h3>About:</h3>
-                    <span>18 y.o.</span>
+                    <span>Age: 18 y.o.</span>
+                    <span>Birth: March 18</span>
+                    <span>City: Minsk</span>
                     <span>Education: BNTU, 2 course</span>
-                    <span>Status: Work hard, play harder</span>
+                    <span className={set.status}>Status: Work hard, play harder</span>
                 </div>
             </div>
             <span>posts</span>
