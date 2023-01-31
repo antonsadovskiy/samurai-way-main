@@ -1,0 +1,34 @@
+.profileContainer {
+    background-color: deepskyblue;
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.backgroundImage img{
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.avatar img {
+    margin: 10px 0 10px 10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+.aboutContainer {
+    display: flex;
+    gap: 20px;
+    border-bottom: 2px solid white;
+}
+
+.about {
+    margin: 10px 0 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.about h3 {
+    margin: 0;
+}
