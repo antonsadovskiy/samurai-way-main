@@ -1,0 +1,16 @@
+.navbarContainer {
+    width: 200px;
+    padding-top: 10px;
+    padding-left: 20px;
+    background-color: deepskyblue;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.navbarContainer a {
+    text-decoration: none;
+    color: black;
+}
