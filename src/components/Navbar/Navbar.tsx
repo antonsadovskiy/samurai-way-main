@@ -4,11 +4,11 @@ import set from "./Navbar.module.css"
 const Navbar = () => {
     return (
         <div className={set.navbarContainer}>
-            <a href="#">Profile</a>
-            <a href="#">Messages</a>
-            <a href="#">News</a>
-            <a href="#">Music</a>
-            <a href="#">Settings</a>
+            <a className={`${set.item} ${set.active}`} href="#">Profile</a>
+            <a className={set.item} href="#">Messages</a>
+            <a className={set.item} href="#">News</a>
+            <a className={set.item} href="#">Music</a>
+            <a className={set.item} href="#">Settings</a>
         </div>
     );
 };
