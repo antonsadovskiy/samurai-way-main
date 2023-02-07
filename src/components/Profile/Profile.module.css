@@ -1,8 +1,5 @@
 .mainContainer {
-    /*position: relative;*/
-    /*z-index: 1;*/
-    /*height: auto;*/
-
+    height: auto;
 }
 
 .backgroundImage{
@@ -15,7 +12,6 @@
     align-items: center;
     width: 150px;
     position: relative;
-    z-index: 3;
     left: 30px;
     top: -120px;
 }

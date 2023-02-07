@@ -5,8 +5,25 @@
 
 .info h3 {
     margin: 10px 0 0 0;
+    font-weight: 600;
 }
 
 .status {
-    margin-top: 15px;
+    margin: 15px 0 0 0;
+}
+
+.statusText {
+    font-style: italic;
+    margin: 0;
+}
+.name {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 600;
+}
+.city {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 400;
+
 }

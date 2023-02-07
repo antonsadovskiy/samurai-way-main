@@ -14,7 +14,6 @@ const Profile = () => {
                 <About />
             </div>
             <MyPosts />
-            <div>dsfg</div>
         </div>
     );
 }

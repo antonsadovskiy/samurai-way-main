@@ -9,3 +9,21 @@
     margin-left: 210px;
     padding-left: 100px;
 }
+.posts {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.button {
+    width: 100px;
+    height: 30px;
+    background-color: white;
+    border: none;
+    transition: all 0.4s ease;
+}
+.button:hover {
+    background-color: lightcoral;
+    color: white;
+}
