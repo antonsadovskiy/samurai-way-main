@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import set from "./Post.module.css";
+import s from "./Post.module.css";
 import avatar from "../../../../asssets/images/ava.jpg"
 
 type PostPropsType = {
@@ -9,12 +9,12 @@ type PostPropsType = {
 
 const Post: FC<PostPropsType> = (props) => {
     return (
-        <div className={set.item}>
+        <div className={s.item}>
             <img src={avatar} alt="avatar"/>
             <span>
                 {props.message}
             </span>
-            <div className={set.likesContainer}>
+            <div className={s.likesContainer}>
                 <button>Like</button>
                 <span>{props.likes}</span>
             </div>
