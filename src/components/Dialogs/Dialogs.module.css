@@ -1,0 +1,22 @@
+.dialogsContainer {
+    display: flex;
+}
+
+.dialogItems {
+    padding: 10px;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    /*gap: 5px;*/
+}
+
+.dialogItems .activeItem {
+    color: yellow;
+}
+
+.messageItems {
+    padding: 10px;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+}

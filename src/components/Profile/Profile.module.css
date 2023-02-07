@@ -1,32 +1,21 @@
-.backgroundImage img{
-    width: 100%;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+.mainContainer {
+    /*position: relative;*/
+    /*z-index: 1;*/
+    /*height: auto;*/
+
 }
 
-.avatar img {
-    margin: 10px 0 10px 10px;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 2px solid black
+.backgroundImage{
+    width: 1000px;
 }
+
 .aboutContainer {
     display: flex;
-    gap: 20px;
-    border-bottom: 2px solid white;
-}
-
-.about {
-    margin: 10px 0 0 0;
-    display: flex;
     flex-direction: column;
-}
-
-.about h3 {
-    margin: 0;
-}
-
-.status {
-    margin-top: 20px;
+    align-items: center;
+    width: 150px;
+    position: relative;
+    z-index: 3;
+    left: 30px;
+    top: -120px;
 }

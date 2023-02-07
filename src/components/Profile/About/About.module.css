@@ -1,0 +1,12 @@
+.about {
+    display: flex;
+    flex-direction: column;
+}
+
+.info h3 {
+    margin: 10px 0 0 0;
+}
+
+.status {
+    margin-top: 15px;
+}
