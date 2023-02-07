@@ -13,9 +13,14 @@
 .item {
     text-decoration: none;
     color: black;
+    transition: all 0.4s ease;
+}
+.item:hover {
+    font-size: 20px;
 }
 
 .active {
     /*color: darkblue;*/
     color: yellow;
+    font-size: 20px;
 }
