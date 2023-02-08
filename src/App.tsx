@@ -17,7 +17,7 @@ const App = () => {
                 <Navbar />
                 <div className="mainContainer">
                     <div className="contentContainer">
-                        <Route path="/profile" component={Profile} />
+                        <Route path="/profile" render={() => <Profile />} />
                         <Route path="/dialogs" component={Dialogs} />
                         <Route path="/news" component={News} />
                         <Route path="/music" component={Music} />

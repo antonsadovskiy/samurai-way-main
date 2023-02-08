@@ -1,5 +1,5 @@
 import React from 'react';
-import avatar from "../../../asssets/images/ava.jpg";
+import avatar from "../../../../asssets/images/ava.jpg";
 import s from './Avatar.module.css'
 
 const Avatar = () => {

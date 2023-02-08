@@ -1,0 +1,16 @@
+
+.backgroundImage{
+    width: 1000px;
+}
+
+.aboutContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 150px;
+    position: relative;
+    left: 30px;
+    top: -120px;
+    /*background-color: white;*/
+    /*padding: 10px;*/
+}

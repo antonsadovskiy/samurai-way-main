@@ -7,16 +7,40 @@
     width: 35%;
     display: flex;
     flex-direction: column;
-    /*gap: 5px;*/
+    border-right: 1px solid black;
 }
-
-.dialogItems .activeItem {
-    color: yellow;
-}
-
 .messageItems {
+    margin: 10px;
     padding: 10px;
     width: 65%;
     display: flex;
     flex-direction: column;
+    background-color: white;
+    justify-content: space-between;
+    gap: 40px;
+}
+.newMessage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+.newMessage textarea{
+    width: 100%;
+    resize: none;
+    box-shadow: 1px 1px 3px black;
+}
+.button {
+    width: 60px;
+    height: 25px;
+    border: 1px solid black;
+    background-color: white;
+    transition: all 0.4s ease;
+    box-shadow: 1px 1px 3px black;
+}
+.button:hover{
+    width: 60px;
+    background-color: lightcoral;
+    border: 1px solid lightcoral;
+    color: white;
 }

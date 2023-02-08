@@ -21,7 +21,7 @@ const Post: FC<PostPropsType> = (props) => {
             <div className={s.postMessage}>
                 {props.message}
             </div>
-            <div className={s.likesContainer}>
+            <div className={s.feedbackContainer}>
                 <button className={s.buttonLike}>Like</button>
                 <div>
                     <span>{props.likes}</span>
