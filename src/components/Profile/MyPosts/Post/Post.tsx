@@ -3,6 +3,8 @@ import s from "./Post.module.css";
 import avatar from "../../../../asssets/images/ava.jpg"
 
 type PostPropsType = {
+    id: number
+    date: string
     message: string
     likes: number
     comments: number
@@ -15,7 +17,7 @@ const Post: FC<PostPropsType> = (props) => {
                 <img src={avatar} alt="avatar"/>
                 <div className={s.nameAndDate}>
                     <p className={s.name}>Anton Sadovskiy</p>
-                    <p className={s.date}>19:08 27 Jan</p>
+                    <p className={s.date}>{props.date}</p>
                 </div>
             </div>
             <div className={s.postMessage}>
