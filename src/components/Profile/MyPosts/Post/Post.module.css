@@ -1,51 +1,6 @@
-.avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
 .item {
     background-color: white;
     color: black;
     border-top: 2px solid white;
     box-shadow: 1px 1px 3px black;
-}
-
-.feedbackContainer span {
-    color: black;
-    font-size: 14px;
-}
-
-.feedbackContainer {
-    padding: 5px 5px 5px 10px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    border-top: 1px dotted black;
-}
-
-.info {
-    display: flex;
-    gap: 5px;
-    padding: 10px;
-    border-bottom: 1px dotted black;
-
-}
-.name {
-    margin: 0;
-    color: black;
-}
-.date {
-    margin: 0;
-    color: black;
-    font-size: 13px;
-}
-.postMessage {
-    padding: 10px;
-
-}
-
-.feedbackIcons {
-    width: 25px;
-    height: 25px;
 }

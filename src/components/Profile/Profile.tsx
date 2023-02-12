@@ -15,14 +15,12 @@ type ProfilePropsType = {
     posts: Array<PostType>
 }
 
-const Profile:FC<ProfilePropsType> = (props) => {
-
-
+const Profile:FC<ProfilePropsType> = ({posts}) => {
 
     return (
         <div className={s.mainContainer}>
             <ProfileInfo />
-            <MyPosts posts={props.posts}/>
+            <MyPosts posts={posts} />
         </div>
     );
 }

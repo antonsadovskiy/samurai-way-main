@@ -1,0 +1,21 @@
+.info {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    border-bottom: 1px dotted black;
+
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.name {
+    margin: 0;
+    color: black;
+}
+.date {
+    margin: 0;
+    color: black;
+    font-size: 13px;
+}

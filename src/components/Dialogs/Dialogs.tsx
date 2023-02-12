@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
+import {DialogPageType} from "../../index";
 
 export type DialogItemType = {
     id: number
@@ -14,14 +15,13 @@ export type MessageItemType = {
 }
 
 type DialogsPropsType = {
-    dialogs: Array<DialogItemType>
-    messages: Array<MessageItemType>
+    dialogPage: DialogPageType
 }
 
 const Dialogs:FC<DialogsPropsType> = (props) => {
 
-    const dialogsItems = props.dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} />)
-    const messageItems = props.messages.map( message => <MessageItem message={message.message} />)
+    const dialogsItems = props.dialogPage.dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} />)
+    const messageItems = props.dialogPage.messages.map( message => <MessageItem message={message.message} />)
 
     return (
         <div>
