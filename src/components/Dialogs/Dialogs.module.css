@@ -29,6 +29,7 @@
     width: 100%;
     resize: none;
     box-shadow: 1px 1px 3px black;
+    outline: none;
 }
 .button {
     width: 60px;

@@ -1,12 +1,12 @@
-.item img {
+.avatar {
     width: 40px;
     height: 40px;
     border-radius: 50%;
 }
 
 .item {
+    background-color: white;
     color: black;
-    border-radius: 30px 30px 20px 20px;
     border-top: 2px solid white;
     box-shadow: 1px 1px 3px black;
 }
@@ -17,18 +17,18 @@
 }
 
 .feedbackContainer {
-    padding: 0 10px 10px 10px;
+    padding: 5px 5px 5px 10px;
     display: flex;
     gap: 10px;
     align-items: center;
+    border-top: 1px dotted black;
 }
 
 .info {
     display: flex;
     gap: 5px;
     padding: 10px;
-    border-radius: 30px;
-    border-bottom: 1px dotted white;
+    border-bottom: 1px dotted black;
 
 }
 .name {
@@ -44,32 +44,8 @@
     padding: 10px;
 
 }
-.buttonLike {
-    width: 40px;
-    height: 20px;
-    background-color: white;
-    border: none;
-    transition: all 0.4s ease;
-    box-shadow: 1px 1px 3px black;
-    border-radius: 30px;
 
-}
-.buttonLike:hover {
-    width: 80px;
-    background-color: lightcoral;
-    color: white;
-}
-.buttonComm {
-    width: 70px;
-    height: 20px;
-    background-color: white;
-    border: none;
-    transition: all 0.4s ease;
-    border-radius: 30px;
-    box-shadow: 1px 1px 3px black;
-}
-.buttonComm:hover {
-    width: 140px;
-    background-color: lightcoral;
-    color: white;
+.feedbackIcons {
+    width: 25px;
+    height: 25px;
 }

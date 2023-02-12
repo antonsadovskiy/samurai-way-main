@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import s from "./MessageItem.module.css";
 
-type MessageItemPropsType = {
+export type MessageItemPropsType = {
     message: string
 }
 
