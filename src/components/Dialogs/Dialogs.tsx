@@ -1,27 +1,23 @@
 import React, {FC} from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
-import MessageItem from "./MessageItem/MessageItem";
-import {DialogPageType} from "../../index";
+import {DialogPageType} from "../../redux/state";
+import UserMessageItem from "./UserMessageItem/UserMessageItem";
+import FriendMessageItem from "./FriendMessageItem/FriendMessageItem";
 
-export type DialogItemType = {
-    id: number
-    name: string
+type DialogsPropsType = {
+    dialogsPage: DialogPageType
 }
 
-export type MessageItemType = {
-    id: number
+export type MessageItemPropsType = {
     message: string
 }
 
-type DialogsPropsType = {
-    dialogPage: DialogPageType
-}
+const Dialogs:FC<DialogsPropsType> = ({dialogsPage}) => {
 
-const Dialogs:FC<DialogsPropsType> = (props) => {
-
-    const dialogsItems = props.dialogPage.dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} />)
-    const messageItems = props.dialogPage.messages.map( message => <MessageItem message={message.message} />)
+    const dialogsItems = dialogsPage.dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
+    const userMessageItems = dialogsPage.userMessages.map( message => <UserMessageItem message={message.message} />)
+    const friendMessageItems = dialogsPage.friendMessages.map( message => <FriendMessageItem message={message.message} />)
 
     return (
         <div>
@@ -30,8 +26,9 @@ const Dialogs:FC<DialogsPropsType> = (props) => {
                     {dialogsItems}
                 </div>
                 <div className={s.messageItems}>
-                    <div>
-                        {messageItems}
+                    <div className={s.messages}>
+                        <div className={s.friendMessages}>{friendMessageItems}</div>
+                        <div className={s.userMessages}>{userMessageItems}</div>
                     </div>
                     <div className={s.newMessage}>
                         <textarea/>

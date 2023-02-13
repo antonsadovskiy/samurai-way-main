@@ -1,0 +1,7 @@
+.item {
+    width: auto;
+    height: auto;
+    background-color: lightblue;
+    display: flex;
+    justify-content: flex-start;
+}

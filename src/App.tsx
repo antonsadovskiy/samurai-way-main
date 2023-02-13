@@ -8,13 +8,13 @@ import {BrowserRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import {StateType} from "./index";
+import {StateType} from "./redux/state";
 
 type AppPropsType = {
     state: StateType
 }
 
-const App:FC<AppPropsType> = (props) => {
+const App:FC<AppPropsType> = ({state}) => {
 
     return (
         <BrowserRouter>
@@ -23,8 +23,8 @@ const App:FC<AppPropsType> = (props) => {
                 <Navbar />
                 <div className="mainContainer">
                     <div className="contentContainer">
-                        <Route path="/profile" render={() => <Profile posts={props.state.profilePage.posts}/>} />
-                        <Route path="/dialogs" render={() => <Dialogs dialogPage={props.state.dialogPage}/>} />
+                        <Route path="/profile" render={() => <Profile profilePage={state.profilePage}/>} />
+                        <Route path="/dialogs" render={() => <Dialogs dialogsPage={state.dialogPage}/>} />
                         <Route path="/news" render={() => <News/>} />
                         <Route path="/music" render={() => <Music/>} />
                         <Route path="/settings" render={() => <Settings/>} />
