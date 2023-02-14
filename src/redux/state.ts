@@ -7,34 +7,27 @@ export type PostType = {
     comments: number
     message: string
 }
-
 export type ProfilePageType = {
     posts: Array<PostType>
 }
-
 export type DialogItemType = {
     id: number
     name: string
     avatar: string
 }
-
 export type MessageItemType = {
     id: number
     message: string
 }
-
 export type DialogPageType = {
     dialogs: Array<DialogItemType>
     userMessages: Array<MessageItemType>
     friendMessages: Array<MessageItemType>
 }
-
 export type StateType = {
     profilePage: ProfilePageType
     dialogPage: DialogPageType
 }
-
-
 
 const state:StateType = {
     profilePage: {
