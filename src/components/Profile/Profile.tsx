@@ -9,7 +9,7 @@ type ProfilePropsType = {
     profilePage: ProfilePageType
 }
 
-const Profile:FC<ProfilePropsType> = ({profilePage}) => {
+const Profile:FC<ProfilePropsType> = ({profilePage,...props}) => {
 
     return (
         <div className={s.mainContainer}>

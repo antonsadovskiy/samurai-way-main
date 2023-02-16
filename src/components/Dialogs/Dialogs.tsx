@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {createRef, FC, RefObject} from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import {DialogPageType} from "../../redux/state";
@@ -19,6 +19,13 @@ const Dialogs:FC<DialogsPropsType> = ({dialogsPage}) => {
     const userMessageItems = dialogsPage.userMessages.map( message => <UserMessageItem message={message.message} />)
     const friendMessageItems = dialogsPage.friendMessages.map( message => <FriendMessageItem message={message.message} />)
 
+    const addMessageTextarea:RefObject<HTMLTextAreaElement> = createRef()
+
+    const onClickHandler = () => {
+        const text = addMessageTextarea.current?.value
+        alert(text)
+    }
+
     return (
         <div>
             <div className={s.dialogsContainer}>
@@ -31,8 +38,8 @@ const Dialogs:FC<DialogsPropsType> = ({dialogsPage}) => {
                         <div className={s.userMessages}>{userMessageItems}</div>
                     </div>
                     <div className={s.newMessage}>
-                        <textarea/>
-                        <button className={s.button}>Send</button>
+                        <textarea ref={addMessageTextarea}/>
+                        <button className={s.button} onClick={onClickHandler}>Send</button>
                     </div>
                 </div>
             </div>
