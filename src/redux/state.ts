@@ -10,6 +10,14 @@ export type PostType = {
 export type ProfilePageType = {
     posts: Array<PostType>
 }
+export type SideBarFriendType = {
+    id: number
+    name: string
+    avatar: string
+}
+export type SideBarType = {
+    friends: Array<SideBarFriendType>
+}
 export type DialogItemType = {
     id: number
     name: string
@@ -27,6 +35,7 @@ export type DialogPageType = {
 export type StateType = {
     profilePage: ProfilePageType
     dialogPage: DialogPageType
+    sideBar: SideBarType
 }
 
 const state:StateType = {
@@ -54,7 +63,26 @@ const state:StateType = {
             {id: 2, message: "i'm good"},
             {id: 3, message: "thanks"},
         ],
+    },
+    sideBar: {
+        friends: [
+            {id: 1, name: "Anton", avatar: avatar},
+            {id: 2, name: "Zhenya", avatar: avatar},
+            {id: 3, name: "Natasha", avatar: avatar},
+        ]
     }
+}
+
+export const addPost = (postMessage: string) => {
+    debugger
+    let newPost:PostType = {
+        id: 4,
+        date: "11:08 28 Jul",
+        likes: 0,
+        comments: 0,
+        message: postMessage
+    }
+    state.profilePage.posts.push(newPost)
 }
 
 export default state
