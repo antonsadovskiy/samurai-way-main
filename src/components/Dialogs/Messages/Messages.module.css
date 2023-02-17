@@ -1,0 +1,20 @@
+
+.messages {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.friendMessages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+.userMessages {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
