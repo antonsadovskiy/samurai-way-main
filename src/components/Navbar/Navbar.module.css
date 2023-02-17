@@ -1,16 +1,25 @@
 .navbarContainer {
-    background-color: white;
+    background-color:#222222;
+    width: 150px;
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+    border: 1px solid darkslategrey;
+    padding-left: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    gap: 8px;
 }
 
 .navItem {
-    width: 200px;
-    height: 40px;
+    display: flex;
+    gap: 5px;
 }
-
+.navItem img {
+    width: 20px;
+    height: 20px;
+}
 
 .item {
     width: 100%;
@@ -19,16 +28,15 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: black;
+    color: white;
     transition: all 0.4s ease;
 }
 .item:hover {
-    background-color: lightcoral;
-    font-size: 20px;
+    /*background-color: lightcoral;*/
+    /*font-size: 20px;*/
 }
 
 .active {
-    background-color: lightcoral;
     color: white;
-    font-size: 20px;
+    text-decoration: underline;
 }

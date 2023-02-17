@@ -1,5 +1,6 @@
 .dialogsContainer {
     display: flex;
+    gap: 10px;
 }
 
 .dialogItems {
@@ -7,16 +8,23 @@
     width: 35%;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    background-color: #222222;
+    border: 1px solid darkslategrey;
+    border-radius: 10px;
 }
 .messageItems {
-    margin: 10px;
+    background-color: #222222;
+    border: 1px solid darkslategrey;
+    border-radius: 10px;
+    /*margin: 10px;*/
     padding: 10px;
     width: 65%;
     display: flex;
     flex-direction: column;
-    background-color: white;
     justify-content: space-between;
     gap: 40px;
+
 }
 .newMessage {
     display: flex;

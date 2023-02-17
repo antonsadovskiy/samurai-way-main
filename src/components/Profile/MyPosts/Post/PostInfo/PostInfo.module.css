@@ -3,7 +3,8 @@
     gap: 5px;
     padding: 10px;
     border-bottom: 1px dotted black;
-
+    font-weight: lighter;
+    color: rgb(210,210,210);
 }
 .avatar {
     width: 40px;
@@ -12,10 +13,10 @@
 }
 .name {
     margin: 0;
-    color: black;
+    color: white;
 }
 .date {
     margin: 0;
-    color: black;
+    color: rgb(210,210,210);
     font-size: 13px;
 }

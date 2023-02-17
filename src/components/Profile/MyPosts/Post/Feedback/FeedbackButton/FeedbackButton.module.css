@@ -2,3 +2,8 @@
     width: 25px;
     height: 25px;
 }
+.button {
+    background: none;
+    border: none;
+    padding: 0;
+}

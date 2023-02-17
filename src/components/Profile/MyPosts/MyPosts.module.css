@@ -1,16 +1,26 @@
+.newPost {
+    background-color: #222222;
+    border-radius: 10px;
+    border: 1px solid darkslategrey;
+}
+
 .newPost textarea {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    width: 100%;
-    height: 50px;
+    width: 92%;
+    height: 20px;
     resize: none;
-    box-shadow: 1px 1px 3px black;
+    margin: 10px 10px 5px 10px;
+    padding: 10px;
     outline: none;
     font-weight: 400;
+    border-radius: 10px;
+    background-color: #141414;
+    color: rgb(210,210,210);
 }
 .postsContainer {
-    width: 600px;
+    width: 550px;
     margin-top: -370px;
-    margin-left: 210px;
+    margin-left: 140px;
     padding-left: 100px;
 }
 .posts {
@@ -21,14 +31,15 @@
 }
 
 .button {
-    width: 100px;
-    height: 30px;
-    background-color: white;
+    background: none;
     border: none;
-    box-shadow: 1px 1px 3px black;
+    padding: 4px;
+    margin: 0 10px 5px 10px;
     transition: all 0.4s ease;
+    position: relative;
+    left: 495px;
 }
-.button:hover {
-    background-color: lightcoral;
-    color: white;
+.button img {
+    width: 20px;
+    height: 20px;
 }

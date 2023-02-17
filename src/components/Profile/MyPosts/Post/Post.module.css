@@ -1,6 +1,7 @@
 .item {
-    background-color: white;
-    color: black;
-    border-top: 2px solid white;
+    background-color: #222222;
+    color: white;
     box-shadow: 1px 1px 3px black;
+    border-radius: 10px;
+    border: 1px solid darkslategrey;
 }
