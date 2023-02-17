@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import s from "./Feedback.module.css"
 import FeedbackButton from "./FeedbackButton/FeedbackButton";
-import like from "../../../../../asssets/feedbackIcons/like.png";
-import comment from "../../../../../asssets/feedbackIcons/comment.png";
+import like from '../../../../../asssets/feedbackIcons/like-icon.png'
+import comment from '../../../../../asssets/feedbackIcons/comment-icon.png'
 
 type FeedbackPropsType = {
     likes: number
@@ -12,13 +12,13 @@ type FeedbackPropsType = {
 const Feedback:FC<FeedbackPropsType> = ({likes, comments}) => {
     return (
         <div className={s.feedbackContainer}>
-            <FeedbackButton name={like}/>
+            <FeedbackButton image={like} name={'like'}/>
             <div>
-                <span>{likes}</span>
+                <p>{likes}</p>
             </div>
-            <FeedbackButton name={comment}/>
+            <FeedbackButton image={comment} name={'comment'}/>
             <div>
-                <span>{comments}</span>
+                <p>{comments}</p>
             </div>
         </div>
     );
