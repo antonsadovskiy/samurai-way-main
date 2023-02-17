@@ -8,11 +8,11 @@ export type DialogItemPropsType = {
     avatar: string
 }
 
-const DialogItem:FC<DialogItemPropsType> = (props) => {
+const DialogItem:FC<DialogItemPropsType> = ({id, avatar, name}) => {
     return (
-        <NavLink className={s.dialogItem} activeClassName={s.active} to={"/dialogs/" + props.id}>
-            <img className={s.avatar} src={props.avatar} alt="avatar"/>
-            {props.name}
+        <NavLink className={s.dialogItem} activeClassName={s.active} to={"/dialogs/" + id}>
+            <img className={s.avatar} src={avatar} alt="avatar"/>
+            {name}
         </NavLink>
     );
 };
