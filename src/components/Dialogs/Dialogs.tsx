@@ -15,9 +15,9 @@ export type MessageItemPropsType = {
 
 const Dialogs:FC<DialogsPropsType> = ({dialogsPage}) => {
 
-    const dialogsItems = dialogsPage.dialogs.map( dialog => <DialogItem name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
-    const userMessageItems = dialogsPage.userMessages.map( message => <UserMessageItem message={message.message} />)
-    const friendMessageItems = dialogsPage.friendMessages.map( message => <FriendMessageItem message={message.message} />)
+    const dialogsItems = dialogsPage.dialogs.map( dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
+    const userMessageItems = dialogsPage.userMessages.map( message => <UserMessageItem key={message.id} message={message.message} />)
+    const friendMessageItems = dialogsPage.friendMessages.map( message => <FriendMessageItem key={message.id} message={message.message} />)
 
     const addMessageTextarea:RefObject<HTMLTextAreaElement> = createRef()
 
