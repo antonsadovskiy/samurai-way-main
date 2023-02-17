@@ -1,5 +1,5 @@
 body {
-    background-color: #e6ecf5;
+    background-color: #141414;
 }
 
 .App {
@@ -7,15 +7,17 @@ body {
     width: 1000px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .mainContainer {
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
 
 .contentContainer {
-    background-color: deepskyblue;
-    width: 1100px;
-    margin: 0 auto;
+    background-color: #141414;
+    border-radius: 10px;
+    width: 100%;
+    /*margin: 0 auto;*/
 }
