@@ -1,24 +1,26 @@
-import React, {ChangeEvent, createRef, FC, RefObject, useRef, useState} from 'react';
+import React, {FC} from 'react';
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {PostType} from "../../../redux/state";
-import sendButton from '../../../asssets/feedbackIcons/send-icon.png'
+import {AddPostActionType, PostType, UpdateNewPostTextActionType} from "../../../redux/state";
 import NewPost from "./NewPost/NewPost";
 
 export type MyPostsPropsType = {
     posts: Array<PostType>
-    addPost: (postMessage: string) => void
+    dispatch: (action: AddPostActionType | UpdateNewPostTextActionType) => void
+    newPostText: string
 }
 
-const MyPosts:FC<MyPostsPropsType> = ({posts,...props}) => {
+const MyPosts: FC<MyPostsPropsType> = (props) => {
 
-    const postsItems = posts.map(post =>
-        <Post key={post.id} id={post.id} date={post.date} message={post.message} likes={post.likes} comments={post.comments} />
+    const postsItems = props.posts.map(post =>
+        <Post key={post.id} id={post.id} date={post.date} message={post.message} likes={post.likes}
+              comments={post.comments}/>
     )
 
     return (
         <div className={s.postsContainer}>
-            <NewPost addPost={props.addPost}/>
+            <NewPost dispatch={props.dispatch}
+                     newPostText={props.newPostText}/>
             <div className={s.posts}>
                 {postsItems}
             </div>
