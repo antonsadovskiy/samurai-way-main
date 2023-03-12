@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import s from "./FriendMessageItem.module.css";
-import {MessageItemPropsType} from "../Messages";
+import {MessageItemPropsType} from "../../Dialogs";
+
 
 const FriendMessageItem:FC<MessageItemPropsType> = (props) => {
     return (

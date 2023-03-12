@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import s from "./UserMessageItem.module.css";
-import {MessageItemPropsType} from "../Messages";
+import {MessageItemPropsType} from "../../Dialogs";
 
 const UserMessageItem:FC<MessageItemPropsType> = ({message}) => {
     return (

@@ -6,7 +6,7 @@ import profile from '../../asssets/feedbackIcons/profile-icon.png'
 import news from '../../asssets/feedbackIcons/news-icon.png'
 import music from '../../asssets/feedbackIcons/music-icon.png'
 import settings from '../../asssets/feedbackIcons/settings-icon.png'
-import {SideBarFriendType} from "../../redux/state";
+import {SideBarFriendType} from "../../redux/store";
 import Friends from "./Friends/Friends";
 
 type NavbarPropsType = {

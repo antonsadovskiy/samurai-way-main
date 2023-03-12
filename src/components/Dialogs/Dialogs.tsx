@@ -1,18 +1,33 @@
-import React, {FC} from 'react';
+import React, {ChangeEvent, FC} from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
-import {ActionsTypes, AddMessageActionType, DialogPageType} from "../../redux/state";
-import NewMessage from "./NewMessage/NewMessage";
-import Messages from "./Messages/Messages";
+import UserMessageItem from "./Messages/UserMessageItem/UserMessageItem";
+import FriendMessageItem from "./Messages/FriendMessageItem/FriendMessageItem";
+import sendButton from "../../asssets/feedbackIcons/send-icon.png";
+import {DialogPageType} from "../../redux/store";
 
 type DialogsPropsType = {
-    dialogsPage: DialogPageType
-    dispatch: (action: ActionsTypes) => void
+    sendMessage: () => void
+    updateNewMessageText: (text: string) => void
+    dialogPage: DialogPageType
+}
+export type MessageItemPropsType = {
+    message: string
 }
 
-const Dialogs:FC<DialogsPropsType> = ({dialogsPage,...props}) => {
+const Dialogs:FC<DialogsPropsType> = (props) => {
 
-    const dialogsItems = dialogsPage.dialogs.map( dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
+    const dialogsItems = props.dialogPage.dialogs.map( dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
+    const userMessageItems = props.dialogPage.userMessages.map( message => <UserMessageItem key={message.id} message={message.message} />)
+    const friendMessageItems = props.dialogPage.friendMessages.map( message => <FriendMessageItem key={message.id} message={message.message} />)
+
+    const onSendMessageClick = () => {
+        props.sendMessage()
+    }
+
+    const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        props.updateNewMessageText(e.currentTarget.value)
+    }
 
     return (
         <div>
@@ -21,9 +36,18 @@ const Dialogs:FC<DialogsPropsType> = ({dialogsPage,...props}) => {
                     {dialogsItems}
                 </div>
                 <div className={s.messageItems}>
-                    <Messages dialogsPage={dialogsPage}/>
-                    <NewMessage dispatch={props.dispatch}
-                                newMessageText={dialogsPage.newMessageText}/>
+                    <div className={s.messages}>
+                        <div className={s.friendMessages}>{friendMessageItems}</div>
+                        <div className={s.userMessages}>{userMessageItems}</div>
+                    </div>
+                    <div className={s.newMessage}>
+                        <textarea placeholder={"Type something..."}
+                                  value={props.dialogPage.newMessageText}
+                                  onChange={onNewMessageChange}/>
+                        <button className={s.button} onClick={onSendMessageClick}>
+                            <img src={sendButton} alt="send"/>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
