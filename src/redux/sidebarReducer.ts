@@ -1,5 +1,15 @@
-import {ActionsTypes, SideBarType} from "./store";
 import avatar from "../asssets/images/avatar.png";
+import {ActionsTypes} from "./profileReducer";
+
+export type SideBarFriendType = {
+    id: number
+    name: string
+    avatar: string
+}
+
+export type SideBarType = {
+    friends: Array<SideBarFriendType>
+}
 
 const initialState: SideBarType = {
     friends: [

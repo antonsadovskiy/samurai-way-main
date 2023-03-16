@@ -1,38 +1,38 @@
-export type PostType = {
+type PostType = {
     id: number
     date: string
     likes: number
     comments: number
     message: string
 }
-export type ProfilePageType = {
+type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
 }
-export type SideBarFriendType = {
+type SideBarFriendType = {
     id: number
     name: string
     avatar: string
 }
-export type SideBarType = {
+type SideBarType = {
     friends: Array<SideBarFriendType>
 }
-export type DialogItemType = {
+type DialogItemType = {
     id: number
     name: string
     avatar: string
 }
-export type MessageItemType = {
+type MessageItemType = {
     id: number
     message: string
 }
-export type DialogPageType = {
+type DialogPageType = {
     dialogs: Array<DialogItemType>
     userMessages: Array<MessageItemType>
     friendMessages: Array<MessageItemType>
     newMessageText: string
 }
-export type StateType = {
+type StateType = {
     profilePage: ProfilePageType
     dialogPage: DialogPageType
     sideBar: SideBarType
@@ -46,24 +46,24 @@ export type StoreType = {
 }
 
 // Action Types
-export type ActionsTypes =
+type ActionsTypes =
     AddPostActionType |
     UpdateNewPostTextActionType |
     AddMessageActionType |
     UpdateNewMessageTextActionType
 
 // own action types
-export type AddPostActionType = {
+type AddPostActionType = {
     type: 'ADD-POST'
 }
-export type UpdateNewPostTextActionType = {
+type UpdateNewPostTextActionType = {
     type: 'UPDATE-NEW-POST-TEXT'
     text: string
 }
-export type AddMessageActionType = {
+type AddMessageActionType = {
     type: 'ADD-MESSAGE'
 }
-export type UpdateNewMessageTextActionType = {
+type UpdateNewMessageTextActionType = {
     type: 'UPDATE-NEW-MESSAGE-TEXT'
     text: string
 }

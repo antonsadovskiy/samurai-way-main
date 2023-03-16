@@ -4,22 +4,17 @@ import DialogItem from "./DialogItem/DialogItem";
 import UserMessageItem from "./Messages/UserMessageItem/UserMessageItem";
 import FriendMessageItem from "./Messages/FriendMessageItem/FriendMessageItem";
 import sendButton from "../../asssets/feedbackIcons/send-icon.png";
-import {DialogPageType} from "../../redux/store";
+import {DialogsPropsType} from "./DialogsContainer";
 
-type DialogsPropsType = {
-    sendMessage: () => void
-    updateNewMessageText: (text: string) => void
-    dialogPage: DialogPageType
-}
 export type MessageItemPropsType = {
     message: string
 }
 
 const Dialogs:FC<DialogsPropsType> = (props) => {
 
-    const dialogsItems = props.dialogPage.dialogs.map( dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
-    const userMessageItems = props.dialogPage.userMessages.map( message => <UserMessageItem key={message.id} message={message.message} />)
-    const friendMessageItems = props.dialogPage.friendMessages.map( message => <FriendMessageItem key={message.id} message={message.message} />)
+    const dialogsItems = props.dialogsPage.dialogs.map( dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
+    const userMessageItems = props.dialogsPage.userMessages.map( message => <UserMessageItem key={message.id} message={message.message} />)
+    const friendMessageItems = props.dialogsPage.friendMessages.map( message => <FriendMessageItem key={message.id} message={message.message} />)
 
     const onSendMessageClick = () => {
         props.sendMessage()
@@ -42,7 +37,7 @@ const Dialogs:FC<DialogsPropsType> = (props) => {
                     </div>
                     <div className={s.newMessage}>
                         <textarea placeholder={"Type something..."}
-                                  value={props.dialogPage.newMessageText}
+                                  value={props.dialogsPage.newMessageText}
                                   onChange={onNewMessageChange}/>
                         <button className={s.button} onClick={onSendMessageClick}>
                             <img src={sendButton} alt="send"/>

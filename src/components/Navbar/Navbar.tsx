@@ -6,11 +6,10 @@ import profile from '../../asssets/feedbackIcons/profile-icon.png'
 import news from '../../asssets/feedbackIcons/news-icon.png'
 import music from '../../asssets/feedbackIcons/music-icon.png'
 import settings from '../../asssets/feedbackIcons/settings-icon.png'
-import {SideBarFriendType} from "../../redux/store";
 import Friends from "./Friends/Friends";
 
 type NavbarPropsType = {
-    friends: Array<SideBarFriendType>
+    // friends: Array<SideBarFriendType>
 }
 
 const Navbar:FC<NavbarPropsType> = (props) => {
@@ -47,7 +46,7 @@ const Navbar:FC<NavbarPropsType> = (props) => {
                     Settings
                 </NavLink>
             </div>
-            <Friends friends={props.friends}/>
+            {/*<Friends friends={props.friends}/>*/}
         </div>
     );
 };

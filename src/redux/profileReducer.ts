@@ -1,11 +1,20 @@
-import {
-    ActionsTypes,
-    AddPostActionType,
-    MessageItemType,
-    PostType,
-    ProfilePageType,
-    UpdateNewPostTextActionType
-} from "./store";
+import {AddMessageActionType, UpdateNewMessageTextActionType} from "./dialogsReducer";
+
+export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType | AddMessageActionType | UpdateNewMessageTextActionType
+export type PostType = {
+    id: number
+    date: string
+    likes: number
+    comments: number
+    message: string
+}
+export type ProfilePageType = {
+    posts: Array<PostType>
+    newPostText: string
+}
+
+export type AddPostActionType = ReturnType<typeof addPostActionCreator>
+export type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextActionCreator>
 
 const initialState: ProfilePageType = {
     posts: [
@@ -25,8 +34,7 @@ const initialState: ProfilePageType = {
 const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes): ProfilePageType => {
     switch (action.type) {
         case "UPDATE-NEW-POST-TEXT":
-            state.newPostText = action.text
-            return state
+            return {...state, newPostText: action.text}
         case "ADD-POST":
             const newPost: PostType = {
                 id: 4,
@@ -36,21 +44,23 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
                 message: state.newPostText
             }
             if (state.newPostText !== ''){
-                state.posts.unshift(newPost)
+                return {...state, posts: [newPost, ...state.posts], newPostText: ''}
             }
-            state.newPostText = ''
             return state
         default:
             return state
     }
 }
 
-export const addPostActionCreator = (): AddPostActionType => {
-    return {type: "ADD-POST"}
+export const addPostActionCreator = () => {
+    return {
+        type: "ADD-POST"
+    } as const
 }
-
-export const updateNewPostTextActionCreator = (text: string): UpdateNewPostTextActionType => {
-    return {type: "UPDATE-NEW-POST-TEXT", text: text}
+export const updateNewPostTextActionCreator = (text: string) => {
+    return {
+        type: "UPDATE-NEW-POST-TEXT", text: text
+    } as const
 }
 
 export default profileReducer

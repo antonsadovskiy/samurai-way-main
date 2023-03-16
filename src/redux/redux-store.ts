@@ -3,9 +3,9 @@ import profileReducer from "./profileReducer"
 import dialogsReducer from "./dialogsReducer"
 import sidebarReducer from "./sidebarReducer"
 
-let rootReducer = combineReducers({
+export const rootReducer = combineReducers({
     profilePage: profileReducer,
-    dialogPage: dialogsReducer,
+    dialogsPage: dialogsReducer,
     sideBar: sidebarReducer
 })
 
