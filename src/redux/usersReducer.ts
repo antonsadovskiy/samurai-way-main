@@ -1,4 +1,3 @@
-import avatar from '../asssets/images/avatar.png'
 
 export type UserType = {
     userId: number
