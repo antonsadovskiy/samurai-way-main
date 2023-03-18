@@ -1,4 +1,3 @@
-
 export type UserType = {
     userId: number
     fullName: string
