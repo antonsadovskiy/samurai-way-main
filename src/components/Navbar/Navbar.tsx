@@ -6,11 +6,9 @@ import profile from '../../asssets/feedbackIcons/profile-icon.png'
 import news from '../../asssets/feedbackIcons/news-icon.png'
 import music from '../../asssets/feedbackIcons/music-icon.png'
 import settings from '../../asssets/feedbackIcons/settings-icon.png'
+import findUsers from '../../asssets/feedbackIcons/find-users-icon.png'
 import Friends from "./Friends/Friends";
-
-type NavbarPropsType = {
-    // friends: Array<SideBarFriendType>
-}
+import {NavbarPropsType} from "./NavbarContainer";
 
 const Navbar:FC<NavbarPropsType> = (props) => {
 
@@ -26,6 +24,12 @@ const Navbar:FC<NavbarPropsType> = (props) => {
                 <img src={dialogs} alt=""/>
                 <NavLink activeClassName={s.active} className={s.item} to="/dialogs">
                     Messages
+                </NavLink>
+            </div>
+            <div className={s.navItem}>
+                <img src={findUsers} alt=""/>
+                <NavLink activeClassName={s.active} className={s.item} to="/users">
+                    Find users
                 </NavLink>
             </div>
             <div className={s.navItem}>
@@ -46,7 +50,7 @@ const Navbar:FC<NavbarPropsType> = (props) => {
                     Settings
                 </NavLink>
             </div>
-            {/*<Friends friends={props.friends}/>*/}
+            <Friends friends={props.friends}/>
         </div>
     );
 };
