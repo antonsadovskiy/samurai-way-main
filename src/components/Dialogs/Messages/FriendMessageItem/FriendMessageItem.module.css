@@ -1,7 +1,11 @@
 .item {
+    border-radius: 10px;
+    padding: 5px;
     width: auto;
     height: auto;
-    background-color: lightblue;
+    background-color: #141414;
+    border: 1px solid darkslategrey;
+    color: rgb(210,210,210);
     display: flex;
     justify-content: flex-start;
 }

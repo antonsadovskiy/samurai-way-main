@@ -46,9 +46,11 @@
     width: 100%;
 }
 .newMessage {
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: center;
 }
 .newMessage textarea{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -64,6 +66,7 @@
     color: rgb(210,210,210);
 }
 .button {
+    /*display: none;*/
     background: none;
     border: none;
     padding: 4px;
