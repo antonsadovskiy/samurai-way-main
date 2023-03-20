@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/samurai-way-main/static/css/main.ab35eac6.css",
+    "main.css": "/samurai-way-main/static/css/main.fda0e28f.css",
     "main.js": "/samurai-way-main/static/js/main.afcc07c3.js",
     "static/media/156963-anime-art-oblako-atmosfera-mir-1920x1080 (1).jpg": "/samurai-way-main/static/media/156963-anime-art-oblako-atmosfera-mir-1920x1080 (1).aeee0d2a70f9bc33dfae.jpg",
     "static/media/ava.jpg": "/samurai-way-main/static/media/ava.78496f668099d2349b13.jpg",
     "static/media/avatar.png": "/samurai-way-main/static/media/avatar.338d35584669312b5094.png",
     "index.html": "/samurai-way-main/index.html",
-    "main.ab35eac6.css.map": "/samurai-way-main/static/css/main.ab35eac6.css.map",
+    "main.fda0e28f.css.map": "/samurai-way-main/static/css/main.fda0e28f.css.map",
     "main.afcc07c3.js.map": "/samurai-way-main/static/js/main.afcc07c3.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab35eac6.css",
+    "static/css/main.fda0e28f.css",
     "static/js/main.afcc07c3.js"
   ]
 }
