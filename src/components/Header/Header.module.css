@@ -1,4 +1,7 @@
 .headerContainer {
+    z-index: 1;
+    width: 1000px;
+    position: fixed;
     height: 70px;
     background-color:#222222;
     display: flex;

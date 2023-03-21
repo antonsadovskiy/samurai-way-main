@@ -1,16 +1,20 @@
 import React, {FC} from 'react';
 import s from './User.module.css'
+import avatar from '../../../asssets/images/user-photo-not-found.png'
 
 type UserPropsType = {
-    userId: number
-    fullName: string
-    status: string
-    avatar: string
-    isFollow: boolean
-    location: {
-        country: string
-        city: string
+    id: number
+    name: string
+    photos: {
+        small: string
+        large: string
     }
+    status: string
+    followed: boolean
+    // location: {
+    //     country: string
+    //     city: string
+    // }
     follow: (userId: number) => void
     unFollow: (userId: number) => void
 }
@@ -18,29 +22,29 @@ type UserPropsType = {
 const User:FC<UserPropsType> = (props) => {
 
     const followHandler = () => {
-        props.follow(props.userId)
+        props.follow(props.id)
     }
     const unFollowHandler = () => {
-        props.unFollow(props.userId)
+        props.unFollow(props.id)
     }
     return (
         <div className={s.user}>
             <div className={s.avaAndButton}>
-                <img src={props.avatar} alt=""/>
+                <img src={props.photos.small? props.photos.small : avatar} alt=""/>
                 {
-                    props.isFollow
+                    props.followed
                         ? <button onClick={unFollowHandler}>unfollow</button>
                         : <button onClick={followHandler}>follow</button>
                 }
             </div>
             <div className={s.info}>
                 <div className={s.userNameAndStatus}>
-                    <div className={s.userName}>{props.fullName}</div>
+                    <div className={s.userName}>{props.name}</div>
                     <div className={s.userStatus}>{props.status}</div>
                 </div>
                 <div className={s.userAddress}>
-                    <div className={s.userCountry}>{props.location.country}</div>
-                    <div className={s.userCity}>{props.location.city}</div>
+                    <div className={s.userCountry}>{'props.location.country'}</div>
+                    <div className={s.userCity}>{'props.location.city'}</div>
                 </div>
             </div>
         </div>
