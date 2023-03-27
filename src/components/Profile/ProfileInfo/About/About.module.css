@@ -8,15 +8,6 @@
     margin: 10px 0 0 0;
     font-weight: 600;
 }
-
-.status {
-    margin: 15px 0 0 0;
-}
-
-.statusText {
-    font-style: italic;
-    margin: 0;
-}
 .name {
     margin: 0;
     font-size: 19px;

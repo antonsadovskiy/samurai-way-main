@@ -1,18 +1,27 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from "./About.module.css";
+import Status from "./Status/Status";
 
-const About = () => {
+type AboutPropsType = {
+    aboutMe: string
+    fullName: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+}
+
+const About: FC<AboutPropsType> = (props) => {
     return (
         <div className={s.about}>
-            <p className={s.name}>Anton Sadovskiy</p>
-            <p className={s.city}>Minsk</p>
+            <div className={s.name}>{props.fullName}</div>
+            <p className={s.city}>user.location</p>
             <div className={s.info}>
                 <h3>About:</h3>
-                <span>Age: 18 y.o.</span><br></br>
-                <span>Birth: March 18</span><br></br>
-                <span>Education: BNTU</span><br></br>
-                <p className={s.status}>Status: </p>
-                <p className={s.statusText}>Work smarter, not harder</p>
+                <span>user.age</span><br></br>
+                <span>Birth: user.dateBirth</span><br></br>
+                <span>Education: user.education</span><br></br>
+                <Status lookingForAJob={props.lookingForAJob}
+                        lookingForAJobDescription={props.lookingForAJobDescription}/>
+
             </div>
         </div>
     );

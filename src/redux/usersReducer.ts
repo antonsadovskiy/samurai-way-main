@@ -21,12 +21,12 @@ export type UsersPageType = {
     isFetching: boolean
 }
 
-type SetIsFetchingActionType = ReturnType<typeof setIsFetchingAC>
-type SetUsersActionType = ReturnType<typeof setUsersAC>
-type SetCurrentPage = ReturnType<typeof setCurrentPageAC>
-type SetTotalUsersCount = ReturnType<typeof setTotalUsersCountAC>
-type FollowUserActionType = ReturnType<typeof followAC>
-type UnFollowUserActionType = ReturnType<typeof unFollowAC>
+type SetIsFetchingActionType = ReturnType<typeof setIsFetching>
+type SetUsersActionType = ReturnType<typeof setUsers>
+type SetCurrentPage = ReturnType<typeof setCurrentPage>
+type SetTotalUsersCount = ReturnType<typeof setTotalUsersCount>
+type FollowUserActionType = ReturnType<typeof follow>
+type UnFollowUserActionType = ReturnType<typeof unFollow>
 
 type ActionsType = SetIsFetchingActionType | SetUsersActionType |
     SetCurrentPage | SetTotalUsersCount |
@@ -59,37 +59,37 @@ const usersReducer = (state: UsersPageType = initialState, action: ActionsType):
             return state
     }
 }
-export const setIsFetchingAC = (newIsFetching: boolean) => {
+export const setIsFetching = (newIsFetching: boolean) => {
     return ({
         type: 'SET-IS-FETCHING',
         newIsFetching
     }) as const
 }
-export const setUsersAC = (users: Array<UserType>) => {
+export const setUsers = (users: Array<UserType>) => {
     return {
         type: 'SET-USERS',
         users
     } as const
 }
-export const setCurrentPageAC = (currentPage: number) => {
+export const setCurrentPage = (currentPage: number) => {
     return {
         type: 'SET-CURRENT-PAGE',
         currentPage
     } as const
 }
-export const setTotalUsersCountAC = (totalUsersCount: number) => {
+export const setTotalUsersCount = (totalUsersCount: number) => {
     return {
         type: 'SET-TOTAL-USERS-COUNT',
         totalUsersCount
     } as const
 }
-export const followAC = (userId: number) => {
+export const follow = (userId: number) => {
     return {
         type: 'FOLLOW-USER',
         userId
     } as const
 }
-export const unFollowAC = (userId: number) => {
+export const unFollow = (userId: number) => {
     return {
         type: 'UNFOLLOW-USER',
         userId

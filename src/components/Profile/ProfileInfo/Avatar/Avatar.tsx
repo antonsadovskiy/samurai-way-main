@@ -1,11 +1,22 @@
-import React from 'react';
-import avatar from "../../../../asssets/images/ava.jpg";
+import React, {FC} from 'react';
+import userPhotoNotFound from "../../../../asssets/images/ava.jpg";
 import s from './Avatar.module.css'
 
-const Avatar = () => {
+type AvatarPropsType = {
+    photos: {
+        small: string
+        large: string
+    }
+}
+
+const Avatar: FC<AvatarPropsType> = (props) => {
     return (
         <div className={s.avatar}>
-            <img src={avatar} alt={"avatar"}/>
+            {
+                props.photos.large
+                    ? <img src={props.photos.large} alt={"avatar"}/>
+                    : <img src={userPhotoNotFound} alt={"avatar"}/>
+            }
         </div>
     );
 };

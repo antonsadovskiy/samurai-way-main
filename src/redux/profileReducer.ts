@@ -1,6 +1,26 @@
 import {AddMessageActionType, UpdateNewMessageTextActionType} from "./dialogsReducer";
 
-export type ActionsTypes = AddPostActionType | UpdateNewPostTextActionType | AddMessageActionType | UpdateNewMessageTextActionType
+export type UserProfileType = {
+    aboutMe: string
+    contacts: {
+        facebook: string
+        website: string
+        vk: string
+        twitter: string
+        instagram: string
+        youtube: string
+        github: string
+        mainLink: string
+    }
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    userId: number
+    photos: {
+        small: string
+        large: string
+    }
+}
 export type PostType = {
     id: number
     date: string
@@ -9,14 +29,21 @@ export type PostType = {
     message: string
 }
 export type ProfilePageType = {
+    profile: UserProfileType | null
     posts: Array<PostType>
     newPostText: string
 }
 
+export type SetUserProfileActionType = ReturnType<typeof setUserProfileAC>
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
 export type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextActionCreator>
 
+export type ActionsTypes = SetUserProfileActionType |
+    AddPostActionType | UpdateNewPostTextActionType
+    | AddMessageActionType | UpdateNewMessageTextActionType
+
 const initialState: ProfilePageType = {
+    profile: null,
     posts: [
         {
             id: 1,
@@ -33,6 +60,8 @@ const initialState: ProfilePageType = {
 
 const profileReducer = (state: ProfilePageType = initialState, action: ActionsTypes): ProfilePageType => {
     switch (action.type) {
+        case "SET-USER-PROFILE":
+            return {...state, profile: action.profile}
         case "UPDATE-NEW-POST-TEXT":
             return {...state,
                 newPostText: action.text}
@@ -56,7 +85,12 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
             return state
     }
 }
-
+export const setUserProfileAC = (profile: UserProfileType) => {
+    return ({
+        type: 'SET-USER-PROFILE',
+        profile
+    }) as const
+}
 export const addPostActionCreator = () => {
     return {
         type: "ADD-POST"
