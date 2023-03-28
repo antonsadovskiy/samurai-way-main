@@ -1,5 +1,5 @@
-import avatar from "../asssets/images/avatar.png";
-import {ActionsTypes} from "./profileReducer";
+import avatar from "../../asssets/images/avatar.png";
+import {ActionsTypes} from "../profile/profileReducer";
 
 export type MessageItemType = {
     id: number

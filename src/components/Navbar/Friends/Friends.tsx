@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import s from './Friends.module.css'
 import Friend from "./Friend/Friend";
-import {SideBarFriendType} from "../../../redux/sidebarReducer";
+import {SideBarFriendType} from "../../../redux/sidebar/sidebarReducer";
 
 type FriendsPropsType = {
     friends: Array<SideBarFriendType>

@@ -1,4 +1,4 @@
-import {AddMessageActionType, UpdateNewMessageTextActionType} from "./dialogsReducer";
+import {AddMessageActionType, UpdateNewMessageTextActionType} from "../dialogs/dialogsReducer";
 
 export type UserProfileType = {
     aboutMe: string
@@ -75,9 +75,7 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
                 message: state.newPostText
             }
             if (state.newPostText !== ''){
-                return {...state,
-                    posts: [newPost, ...state.posts],
-                    newPostText: ''}
+                return {...state, posts: [newPost, ...state.posts], newPostText: ''}
             }
             return state
 

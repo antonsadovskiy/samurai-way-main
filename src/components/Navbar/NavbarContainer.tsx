@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import {AppStateType} from "../../redux/redux-store";
-import {SideBarFriendType} from "../../redux/sidebarReducer";
+import {SideBarFriendType} from "../../redux/sidebar/sidebarReducer";
 import {connect} from "react-redux";
 
 type MapStatePropsType = {

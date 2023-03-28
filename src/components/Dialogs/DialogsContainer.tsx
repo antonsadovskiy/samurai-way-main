@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {AppStateType} from "../../redux/redux-store";
-import {addMessageActionCreator, DialogPageType, updateNewMessageTextActionCreator} from "../../redux/dialogsReducer";
+import {addMessageActionCreator, DialogPageType, updateNewMessageTextActionCreator} from "../../redux/dialogs/dialogsReducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {Dispatch} from "redux";

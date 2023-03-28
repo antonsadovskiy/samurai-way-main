@@ -3,7 +3,7 @@ import s from "./ProfileInfo.module.css";
 import backgroundImage from "../../../asssets/images/156963-anime-art-oblako-atmosfera-mir-1920x1080 (1).jpg";
 import Avatar from "./Avatar/Avatar";
 import About from "./About/About";
-import {UserProfileType} from "../../../redux/profileReducer";
+import {UserProfileType} from "../../../redux/profile/profileReducer";
 
 type ProfileInfoPropsType = {
     profile: UserProfileType
