@@ -10,13 +10,13 @@ import {RouteComponentProps, withRouter} from "react-router-dom";
 type PathParamsType = {
     userId: string
 }
-type mapStateToProps = {
+type mapStateToPropsType = {
     profile: UserProfileType | null
 }
-type mapDispatchToProps = {
+type mapDispatchToPropsType = {
     setUserProfile: (profile: UserProfileType) => void
 }
-export type ProfileAPIComponent = mapStateToProps & mapDispatchToProps
+export type ProfileAPIComponent = mapStateToPropsType & mapDispatchToPropsType
 type PropsType = RouteComponentProps<PathParamsType> & ProfileAPIComponent
 
 class ProfileContainer extends React.Component<PropsType> {
@@ -38,10 +38,10 @@ class ProfileContainer extends React.Component<PropsType> {
     }
 }
 
-const mapStateToProps = (state: AppStateType): mapStateToProps => ({
+const mapStateToProps = (state: AppStateType): mapStateToPropsType => ({
     profile: state.profilePage.profile
 })
-const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToProps => {
+const mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
         setUserProfile(profile: UserProfileType) {
             dispatch(setUserProfileAC(profile))
