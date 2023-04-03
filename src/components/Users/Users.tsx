@@ -3,6 +3,8 @@ import {UserType} from "../../redux/users/usersReducer";
 import s from "./Users.module.css";
 import avatar from "../../asssets/images/user-photo-not-found.png";
 import { NavLink } from 'react-router-dom';
+import axios from "axios";
+import {usersAPI} from "../../api/api";
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -21,6 +23,29 @@ const Users:FC<UsersPropsType> = (props) => {
     for (let i = 1; i <= 10; i++) {
         pages.push(i)
     }
+
+    const followHandler = (userId: number) => {
+        usersAPI.follow(userId)
+            .then(data => {
+                if (data.resultCode === 0){
+                    console.log(data)
+                    props.follow(userId)
+                }
+                console.log(data)
+            })
+
+    }
+    const unfollowHandler = (userId: number) => {
+        usersAPI.unFollow(userId)
+            .then(data => {
+                if (data.resultCode === 0){
+                    console.log(data)
+                    props.unFollow(userId)
+                }
+                console.log(data)
+            })
+    }
+
 
     return (
         <div className={s.usersContainer}>
@@ -44,18 +69,9 @@ const Users:FC<UsersPropsType> = (props) => {
                                 <img src={u.photos.small ? u.photos.small : avatar} alt=""/>
                             </NavLink>
                             {
-                                u.followed ?
-                                    <button onClick={() => {
-                                        props.unFollow(u.id)
-                                    }}>
-                                        unfollow
-                                    </button>
-                                    :
-                                    <button onClick={() => {
-                                        props.follow(u.id)
-                                    }}>
-                                        follow
-                                    </button>
+                                u.followed
+                                    ? <button onClick={() => unfollowHandler(u.id)}>unfollow</button>
+                                    : <button onClick={() => followHandler(u.id)}>follow</button>
                             }
                         </div>
                         <div className={s.info}>
