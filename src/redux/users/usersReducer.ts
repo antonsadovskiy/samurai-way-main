@@ -19,8 +19,10 @@ export type UsersPageType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    isButtonDisabled: Array<number>
 }
 
+type setIsButtonDisabledActionType = ReturnType<typeof setIsButtonDisabled>
 type SetIsFetchingActionType = ReturnType<typeof setIsFetching>
 type SetUsersActionType = ReturnType<typeof setUsers>
 type SetCurrentPage = ReturnType<typeof setCurrentPage>
@@ -28,7 +30,7 @@ type SetTotalUsersCount = ReturnType<typeof setTotalUsersCount>
 type FollowUserActionType = ReturnType<typeof follow>
 type UnFollowUserActionType = ReturnType<typeof unFollow>
 
-type ActionsType = SetIsFetchingActionType | SetUsersActionType |
+type ActionsType = setIsButtonDisabledActionType| SetIsFetchingActionType | SetUsersActionType |
     SetCurrentPage | SetTotalUsersCount |
     FollowUserActionType | UnFollowUserActionType
 
@@ -37,10 +39,16 @@ const initialState: UsersPageType = {
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    isButtonDisabled: []
 }
 const usersReducer = (state: UsersPageType = initialState, action: ActionsType): UsersPageType => {
     switch (action.type) {
+        case "SET-IS-BUTTON-DISABLED":
+            return {...state,
+                isButtonDisabled: action.newIsButtonDisabled
+                    ? [...state.isButtonDisabled, action.userId]
+                    : state.isButtonDisabled.filter(userId => userId !== action.userId)}
         case "SET-IS-FETCHING":
             return {...state, isFetching: action.newIsFetching}
         case 'SET-USERS':
@@ -58,6 +66,14 @@ const usersReducer = (state: UsersPageType = initialState, action: ActionsType):
         default:
             return state
     }
+}
+
+export const setIsButtonDisabled = (userId: number, newIsButtonDisabled: boolean) => {
+    return ({
+        type: 'SET-IS-BUTTON-DISABLED',
+        userId,
+        newIsButtonDisabled
+    }) as const
 }
 export const setIsFetching = (newIsFetching: boolean) => {
     return ({

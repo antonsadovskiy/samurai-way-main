@@ -16,7 +16,8 @@ beforeEach(() => {
         pageSize: 5,
         totalUsersCount: 0,
         currentPage: 1,
-        isFetching: false
+        isFetching: false,
+        isButtonDisabled: []
     }
 })
 
@@ -117,7 +118,8 @@ test('should follow correct user',() => {
         pageSize: 5,
         totalUsersCount: 0,
         currentPage: 1,
-        isFetching: false
+        isFetching: false,
+        isButtonDisabled: []
     }
     const userId = startState.users[0].id
 
@@ -157,7 +159,8 @@ test('should unfollow correct user',() => {
         pageSize: 5,
         totalUsersCount: 0,
         currentPage: 1,
-        isFetching: false
+        isFetching: false,
+        isButtonDisabled: []
     }
     const userId = startState.users[1].id
 

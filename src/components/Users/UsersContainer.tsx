@@ -6,7 +6,7 @@ import {
     setTotalUsersCount,
     setUsers,
     unFollow,
-    UserType
+    UserType, setIsButtonDisabled
 } from "../../redux/users/usersReducer";
 import {AppStateType} from "../../redux/redux-store";
 import React from "react";
@@ -20,8 +20,10 @@ type MapStatePropsType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    isButtonDisabled: Array<number>
 }
 type MapDispatchToProps = {
+    setIsButtonDisabled: (userId: number, newIsButtonDisabled: boolean) => void
     setIsFetching: (newIsFetching: boolean) => void
     setUsers: (users: Array<UserType>) => void
     setCurrentPage: (currentPage: number) => void
@@ -65,7 +67,9 @@ class UsersContainer extends React.Component<UsersAPIPropsType> {
                          currentPage={this.props.currentPage}
                          onChangePageHandler={this.onChangePageHandler}
                          follow={this.props.follow}
-                         unFollow={this.props.unFollow}/>
+                         unFollow={this.props.unFollow}
+                         isButtonDisabled={this.props.isButtonDisabled}
+                         setIsButtonDisabled={this.props.setIsButtonDisabled}/>
         )
     }
 }
@@ -76,11 +80,12 @@ const MapStateToProps = (state: AppStateType): MapStatePropsType => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        isButtonDisabled: state.usersPage.isButtonDisabled
     }
 }
 
 
 export default connect(MapStateToProps, {
-    setIsFetching, setUsers, setCurrentPage, setTotalUsersCount, follow, unFollow
+    setIsButtonDisabled, setIsFetching, setUsers, setCurrentPage, setTotalUsersCount, follow, unFollow
 })(UsersContainer)

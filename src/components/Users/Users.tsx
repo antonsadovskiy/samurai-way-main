@@ -1,9 +1,8 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import {UserType} from "../../redux/users/usersReducer";
 import s from "./Users.module.css";
 import avatar from "../../asssets/images/user-photo-not-found.png";
-import { NavLink } from 'react-router-dom';
-import axios from "axios";
+import {NavLink} from 'react-router-dom';
 import {usersAPI} from "../../api/api";
 
 type UsersPropsType = {
@@ -14,9 +13,11 @@ type UsersPropsType = {
     onChangePageHandler: (currentPage: number) => void
     follow: (userId: number) => void
     unFollow: (userId: number) => void
+    isButtonDisabled: Array<number>
+    setIsButtonDisabled: (userId: number, newIsButtonDisabled: boolean) => void
 }
 
-const Users:FC<UsersPropsType> = (props) => {
+const Users: FC<UsersPropsType> = (props) => {
 
     const pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
     const pages = []
@@ -25,27 +26,26 @@ const Users:FC<UsersPropsType> = (props) => {
     }
 
     const followHandler = (userId: number) => {
+        props.setIsButtonDisabled(userId, true)
         usersAPI.follow(userId)
             .then(data => {
-                if (data.resultCode === 0){
-                    console.log(data)
+                if (data.resultCode === 0) {
                     props.follow(userId)
                 }
-                console.log(data)
+                props.setIsButtonDisabled(userId, false)
             })
 
     }
     const unfollowHandler = (userId: number) => {
+        props.setIsButtonDisabled(userId, true)
         usersAPI.unFollow(userId)
             .then(data => {
-                if (data.resultCode === 0){
-                    console.log(data)
+                if (data.resultCode === 0) {
                     props.unFollow(userId)
                 }
-                console.log(data)
+                props.setIsButtonDisabled(userId, false)
             })
     }
-
 
     return (
         <div className={s.usersContainer}>
@@ -70,8 +70,10 @@ const Users:FC<UsersPropsType> = (props) => {
                             </NavLink>
                             {
                                 u.followed
-                                    ? <button onClick={() => unfollowHandler(u.id)}>unfollow</button>
-                                    : <button onClick={() => followHandler(u.id)}>follow</button>
+                                    ? <button disabled={props.isButtonDisabled.some(id => id === u.id)}
+                                              onClick={() => unfollowHandler(u.id)}>unfollow</button>
+                                    : <button disabled={props.isButtonDisabled.some(id => id === u.id)}
+                                              onClick={() => followHandler(u.id)}>follow</button>
                             }
                         </div>
                         <div className={s.info}>
