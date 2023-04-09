@@ -1,9 +1,9 @@
 import usersReducer, {
-    follow,
+    followSuccess, unFollowSuccess,
     setCurrentPage,
     setIsFetching,
     setTotalUsersCount,
-    setUsers, unFollow,
+    setUsers,
     UsersPageType,
     UserType
 } from "./usersReducer";
@@ -123,7 +123,7 @@ test('should follow correct user',() => {
     }
     const userId = startState.users[0].id
 
-    const action = follow(userId)
+    const action = followSuccess(userId)
     const endState = usersReducer(startState, action)
 
     expect(endState.users[0].followed).toBeTruthy()
@@ -164,7 +164,7 @@ test('should unfollow correct user',() => {
     }
     const userId = startState.users[1].id
 
-    const action = unFollow(userId)
+    const action = unFollowSuccess(userId)
     const endState = usersReducer(startState, action)
 
     expect(endState.users[0].followed).toBeTruthy()

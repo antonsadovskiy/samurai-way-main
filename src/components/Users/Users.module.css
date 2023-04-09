@@ -50,3 +50,7 @@
 .selectedPage {
     font-weight: bold;
 }
+.pagesNavigation {
+    display: flex;
+    gap: 3px;
+}

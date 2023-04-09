@@ -1,7 +1,7 @@
 import profileReducer, {
     addPostActionCreator,
-    ProfilePageType,
-    setUserProfileAC, updateNewPostTextActionCreator,
+    ProfilePageType, setUserProfileSuccess,
+    updateNewPostTextActionCreator,
     UserProfileType
 } from "./profileReducer";
 
@@ -49,7 +49,7 @@ test('should set correct user profile',() => {
         lookingForAJobDescription: 'I"am joking'
     }
 
-    const action = setUserProfileAC(newUserProfile)
+    const action = setUserProfileSuccess(newUserProfile)
     const endState = profileReducer(startState, action)
 
     expect(endState.profile?.userId).toBe(newUserProfile.userId)

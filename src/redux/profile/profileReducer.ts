@@ -1,4 +1,6 @@
 import {AddMessageActionType, UpdateNewMessageTextActionType} from "../dialogs/dialogsReducer";
+import {Dispatch} from "redux";
+import {profileAPI} from "../../api/api";
 
 export type UserProfileType = {
     aboutMe: string
@@ -34,7 +36,7 @@ export type ProfilePageType = {
     newPostText: string
 }
 
-export type SetUserProfileActionType = ReturnType<typeof setUserProfileAC>
+export type SetUserProfileActionType = ReturnType<typeof setUserProfileSuccess>
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
 export type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextActionCreator>
 
@@ -83,7 +85,7 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
             return state
     }
 }
-export const setUserProfileAC = (profile: UserProfileType) => {
+export const setUserProfileSuccess = (profile: UserProfileType) => {
     return ({
         type: 'SET-USER-PROFILE',
         profile
@@ -98,6 +100,13 @@ export const updateNewPostTextActionCreator = (text: string) => {
     return {
         type: "UPDATE-NEW-POST-TEXT", text: text
     } as const
+}
+
+export const setProfile = (userId: string) => (dispatch: Dispatch) => {
+    profileAPI.setProfile(userId)
+        .then(data => {
+            dispatch(setUserProfileSuccess(data))
+        })
 }
 
 export default profileReducer

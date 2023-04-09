@@ -1,9 +1,8 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {UserType} from "../../redux/users/usersReducer";
 import s from "./Users.module.css";
 import avatar from "../../asssets/images/user-photo-not-found.png";
 import {NavLink} from 'react-router-dom';
-import {usersAPI} from "../../api/api";
 
 type UsersPropsType = {
     users: Array<UserType>
@@ -12,9 +11,8 @@ type UsersPropsType = {
     currentPage: number
     onChangePageHandler: (currentPage: number) => void
     follow: (userId: number) => void
-    unFollow: (userId: number) => void
+    unfollow: (userId: number) => void
     isButtonDisabled: Array<number>
-    setIsButtonDisabled: (userId: number, newIsButtonDisabled: boolean) => void
 }
 
 const Users: FC<UsersPropsType> = (props) => {
@@ -26,30 +24,15 @@ const Users: FC<UsersPropsType> = (props) => {
     }
 
     const followHandler = (userId: number) => {
-        props.setIsButtonDisabled(userId, true)
-        usersAPI.follow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    props.follow(userId)
-                }
-                props.setIsButtonDisabled(userId, false)
-            })
-
+        props.follow(userId)
     }
     const unfollowHandler = (userId: number) => {
-        props.setIsButtonDisabled(userId, true)
-        usersAPI.unFollow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    props.unFollow(userId)
-                }
-                props.setIsButtonDisabled(userId, false)
-            })
+        props.unfollow(userId)
     }
 
     return (
         <div className={s.usersContainer}>
-            <div>
+            <div className={s.pagesNavigation}>
                 {
                     pages.map(page => {
                         return (
