@@ -2,7 +2,8 @@ import {Dispatch} from "redux";
 import {authAPI} from "../../api/api";
 
 type SetUserDataActionType = ReturnType<typeof setAuthUserData>
-type ActionsType = SetUserDataActionType
+type LogOutActionType = ReturnType<typeof logoutUser>
+type ActionsType = SetUserDataActionType | LogOutActionType
 
 export type AuthStateType = {
     id: number | null
@@ -22,6 +23,8 @@ export const authReducer = (state: AuthStateType = initialState, action: Actions
     switch (action.type) {
         case 'SET-USER-DATA':
             return {...state, ...action.data, isAuth: true}
+        case "LOG-OUT":
+            return {...state, id: null, email: null, login: null, isAuth: false}
         default:
             return state
     }
@@ -37,8 +40,13 @@ export const setAuthUserData = (id: number, email: string, login: string) => {
         }
     }) as const
 }
+export const logoutUser = () => {
+    return ({
+        type: 'LOG-OUT'
+    }) as const
+}
 
-export const auth = () => (dispatch: Dispatch) => {
+export const getAuthUserDate = () => (dispatch: Dispatch) => {
     authAPI.auth()
         .then(data => {
                 const {id, email, login} = data.data

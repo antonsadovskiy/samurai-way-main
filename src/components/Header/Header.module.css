@@ -20,7 +20,11 @@
     margin-right: 30px;
 
 }
-.login {
+.authorisedUser {
+    display: flex;
+    gap: 10px;
+}
+.notAuthorisedUser {
     text-decoration: none;
     color: white;
 }

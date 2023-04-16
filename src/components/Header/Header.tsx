@@ -5,21 +5,27 @@ import s from "./Header.module.css"
 type HeaderPropsType = {
     login: string | null
     isAuth: boolean
+    logoutUser: () => void
 }
 
 const Header: FC<HeaderPropsType> = (props) => {
+
+    const onClickLogOutHandler = () => {
+        props.logoutUser()
+    }
+
     return (
         <div className={s.headerContainer}>
             <h3>всенаместе</h3>
             <div className={s.loginBlock}>
                 {
                     props.isAuth
-                        ? <div>
-                            <span>{props.login}</span>
+                        ? <div className={s.authorisedUser}>
+                            <div>{props.login}</div>
+                            <button onClick={onClickLogOutHandler}>Log out</button>
                         </div>
-                        : <NavLink to={'/login'} className={s.login}>
+                        : <NavLink to={'/login'} className={s.notAuthorisedUser}>
                             Log in
-                            Log out
                         </NavLink>
                 }
             </div>

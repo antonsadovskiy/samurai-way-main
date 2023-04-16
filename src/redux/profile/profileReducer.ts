@@ -36,7 +36,7 @@ export type ProfilePageType = {
     newPostText: string
 }
 
-export type SetUserProfileActionType = ReturnType<typeof setUserProfileSuccess>
+export type SetUserProfileActionType = ReturnType<typeof setUserProfile>
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
 export type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextActionCreator>
 
@@ -85,7 +85,7 @@ const profileReducer = (state: ProfilePageType = initialState, action: ActionsTy
             return state
     }
 }
-export const setUserProfileSuccess = (profile: UserProfileType) => {
+export const setUserProfile = (profile: UserProfileType) => {
     return ({
         type: 'SET-USER-PROFILE',
         profile
@@ -102,10 +102,10 @@ export const updateNewPostTextActionCreator = (text: string) => {
     } as const
 }
 
-export const setProfile = (userId: string) => (dispatch: Dispatch) => {
+export const getProfile = (userId: string) => (dispatch: Dispatch) => {
     profileAPI.setProfile(userId)
         .then(data => {
-            dispatch(setUserProfileSuccess(data))
+            dispatch(setUserProfile(data))
         })
 }
 
