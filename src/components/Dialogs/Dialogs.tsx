@@ -5,7 +5,6 @@ import UserMessageItem from "./Messages/UserMessageItem/UserMessageItem";
 import FriendMessageItem from "./Messages/FriendMessageItem/FriendMessageItem";
 import sendButton from "../../asssets/feedbackIcons/send-icon.png";
 import {DialogsPropsType} from "./DialogsContainer";
-import {Redirect} from "react-router-dom";
 
 export type MessageItemPropsType = {
     message: string
@@ -24,8 +23,6 @@ const Dialogs:FC<DialogsPropsType> = (props) => {
     const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         props.updateNewMessageText(e.currentTarget.value)
     }
-
-    if (!props.isAuth) return <Redirect to={'/login'}/>
 
     return (
         <div>

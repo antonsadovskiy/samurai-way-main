@@ -3,9 +3,11 @@ import {
     UserType, setIsButtonDisabled, getUsers, follow, unfollow
 } from "../../redux/users/usersReducer";
 import {AppStateType} from "../../redux/redux-store";
-import React from "react";
+import React, {ComponentType} from "react";
 import Users from "./Users";
 import Preloader from "../Preloader/Preloader";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 type MapStatePropsType = {
     users: Array<UserType>
@@ -59,7 +61,9 @@ const MapStateToProps = (state: AppStateType): MapStatePropsType => {
     }
 }
 
-
-export default connect(MapStateToProps, {
-    getUsers, follow, unfollow
-})(UsersContainer)
+export default compose<ComponentType>(
+    connect(MapStateToProps, {
+        getUsers, follow, unfollow
+    }),
+    withAuthRedirect,
+)(UsersContainer)
