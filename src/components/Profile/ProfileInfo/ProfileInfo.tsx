@@ -4,9 +4,12 @@ import backgroundImage from "../../../asssets/images/156963-anime-art-oblako-atm
 import Avatar from "./Avatar/Avatar";
 import About from "./About/About";
 import {UserProfileType} from "../../../redux/profile/profileReducer";
+import Status from "./Status/Status";
 
 type ProfileInfoPropsType = {
     profile: UserProfileType
+    status: string
+    updateStatus: (newStatus: string) => void
 }
 
 const ProfileInfo:FC<ProfileInfoPropsType> = (props) => {
@@ -19,6 +22,7 @@ const ProfileInfo:FC<ProfileInfoPropsType> = (props) => {
                        fullName={props.profile.fullName}
                        lookingForAJob={props.profile.lookingForAJob}
                        lookingForAJobDescription={props.profile.lookingForAJobDescription}/>
+                <Status status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     );

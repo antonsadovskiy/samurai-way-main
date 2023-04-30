@@ -1,28 +1,34 @@
-import React, {ChangeEvent, FC} from 'react';
+import React, {FC} from 'react';
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import UserMessageItem from "./Messages/UserMessageItem/UserMessageItem";
 import FriendMessageItem from "./Messages/FriendMessageItem/FriendMessageItem";
 import sendButton from "../../asssets/feedbackIcons/send-icon.png";
 import {DialogsPropsType} from "./DialogsContainer";
+import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {maxLengthCreator, minLengthCreator, required} from "../../utils/validators/validators";
+import {Textarea} from "../common/FormControls/FormControls";
 
 export type MessageItemPropsType = {
     message: string
 }
+export type FormPropsType = {
+    newMessageText: string
+}
 
-const Dialogs:FC<DialogsPropsType> = (props) => {
+const maxLength = maxLengthCreator(50)
+const minLength = minLengthCreator(5)
 
-    const dialogsItems = props.dialogsPage.dialogs.map( dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
-    const userMessageItems = props.dialogsPage.userMessages.map( message => <UserMessageItem key={message.id} message={message.message} />)
-    const friendMessageItems = props.dialogsPage.friendMessages.map( message => <FriendMessageItem key={message.id} message={message.message} />)
+const Dialogs: FC<DialogsPropsType> = (props) => {
 
-    const onSendMessageClick = () => {
-        props.sendMessage()
-    }
+    const dialogsItems = props.dialogsPage.dialogs.map(dialog =>
+        <DialogItem key={dialog.id} name={dialog.name} id={dialog.id} avatar={dialog.avatar}/>)
+    const userMessageItems = props.dialogsPage.userMessages.map(message =>
+        <UserMessageItem key={message.id} message={message.message}/>)
+    const friendMessageItems = props.dialogsPage.friendMessages.map(message =>
+        <FriendMessageItem key={message.id} message={message.message}/>)
 
-    const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        props.updateNewMessageText(e.currentTarget.value)
-    }
+    const onSendMessageClick = (value: FormPropsType) => props.sendMessage(value.newMessageText)
 
     return (
         <div>
@@ -35,18 +41,26 @@ const Dialogs:FC<DialogsPropsType> = (props) => {
                         <div className={s.friendMessages}>{friendMessageItems}</div>
                         <div className={s.userMessages}>{userMessageItems}</div>
                     </div>
-                    <div className={s.newMessage}>
-                        <textarea placeholder={"Type something..."}
-                                  value={props.dialogsPage.newMessageText}
-                                  onChange={onNewMessageChange}/>
-                        <button className={s.button} onClick={onSendMessageClick}>
-                            <img src={sendButton} alt="send"/>
-                        </button>
-                    </div>
+                    <AddMessagesFormRedux onSubmit={onSendMessageClick}/>
                 </div>
             </div>
         </div>
     );
 };
+
+export const AddMessagesForm:FC<InjectedFormProps<FormPropsType>> = (props) => {
+    return (
+        <form className={s.newMessage} onSubmit={props.handleSubmit}>
+            <Field component={Textarea}
+                   name={'newMessageText'}
+                   placeholder={'Type something...'}
+                   validate={[required, maxLength, minLength]}/>
+            <button className={s.button} >
+                <img src={sendButton} alt="send"/>
+            </button>
+        </form>
+    )
+}
+const AddMessagesFormRedux = reduxForm<FormPropsType>({form: 'dialogAddMessageForm'})(AddMessagesForm)
 
 export default Dialogs;

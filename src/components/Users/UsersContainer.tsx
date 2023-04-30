@@ -5,7 +5,7 @@ import {
 import {AppStateType} from "../../redux/redux-store";
 import React, {ComponentType} from "react";
 import Users from "./Users";
-import Preloader from "../Preloader/Preloader";
+import Preloader from "../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
 

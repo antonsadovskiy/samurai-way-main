@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import s from "./About.module.css";
-import Status from "./Status/Status";
+import SearchJob from "./SearchJob/SearchJob";
 
 type AboutPropsType = {
     aboutMe: string
@@ -19,9 +19,8 @@ const About: FC<AboutPropsType> = (props) => {
                 <span>user.age</span><br/>
                 <span>Birth: user.dateBirth</span><br/>
                 <span>Education: user.education</span><br/>
-                <Status lookingForAJob={props.lookingForAJob}
-                        lookingForAJobDescription={props.lookingForAJobDescription}/>
-
+                <SearchJob lookingForAJob={props.lookingForAJob}
+                           lookingForAJobDescription={props.lookingForAJobDescription}/>
             </div>
         </div>
     );

@@ -45,7 +45,7 @@ const initialState: UsersPageType = {
     isFetching: false,
     isButtonDisabled: []
 }
-const usersReducer = (state: UsersPageType = initialState, action: ActionsType): UsersPageType => {
+export const usersReducer = (state: UsersPageType = initialState, action: ActionsType): UsersPageType => {
     switch (action.type) {
         case "SET-IS-BUTTON-DISABLED":
             return {...state,
@@ -146,6 +146,3 @@ export const unfollow = (userId: number) => (dispatch: Dispatch) => {
             dispatch(setIsButtonDisabled(userId, false))
         })
 }
-
-
-export default usersReducer

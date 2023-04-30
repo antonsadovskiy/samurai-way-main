@@ -1,4 +1,5 @@
-import usersReducer, {
+import {
+    usersReducer,
     followSuccess, unFollowSuccess,
     setCurrentPage,
     setIsFetching,
@@ -89,32 +90,32 @@ test('should set the total users count', () => {
     expect(endState.totalUsersCount).toBe(totalUsersCount)
 })
 
-test('should follow correct user',() => {
+test('should follow correct user', () => {
     startState = {
         users: [
-        {
-            name: 'Anton',
-            id: 1,
-            uniqueUrlName: '',
-            photos: {
-                small: '',
-                large: '',
+            {
+                name: 'Anton',
+                id: 1,
+                uniqueUrlName: '',
+                photos: {
+                    small: '',
+                    large: '',
+                },
+                status: 'hello, i am anton',
+                followed: false,
             },
-            status: 'hello, i am anton',
-            followed: false,
-        },
-        {
-            name: 'Vika',
-            id: 2,
-            uniqueUrlName: '',
-            photos: {
-                small: '',
-                large: '',
-            },
-            status: 'hello, i am vika',
-            followed: false,
-        }
-    ],
+            {
+                name: 'Vika',
+                id: 2,
+                uniqueUrlName: '',
+                photos: {
+                    small: '',
+                    large: '',
+                },
+                status: 'hello, i am vika',
+                followed: false,
+            }
+        ],
         pageSize: 5,
         totalUsersCount: 0,
         currentPage: 1,
@@ -130,7 +131,7 @@ test('should follow correct user',() => {
     expect(endState.users[1].followed).toBeFalsy()
 })
 
-test('should unfollow correct user',() => {
+test('should unfollow correct user', () => {
     startState = {
         users: [
             {

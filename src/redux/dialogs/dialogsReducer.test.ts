@@ -1,7 +1,7 @@
-import dialogsReducer, {
+import {
+    dialogsReducer,
     addMessageActionCreator,
     DialogPageType,
-    updateNewMessageTextActionCreator
 } from "./dialogsReducer";
 import avatar from "../../asssets/images/avatar.png";
 
@@ -25,25 +25,15 @@ beforeEach(() => {
             {id: 2, message: "i'm good"},
             {id: 3, message: "thanks"},
         ],
-        newMessageText: ''
     }
 })
 
-test('should add new message',() => {
+test('should add new message', () => {
     const newMessageText = 'my name is Anton'
-    startState = {...startState, newMessageText: newMessageText}
+    startState = {...startState}
 
-    const action = addMessageActionCreator()
+    const action = addMessageActionCreator(newMessageText)
     const endState = dialogsReducer(startState, action)
 
     expect(endState.userMessages[2].message).toBe(newMessageText)
-    expect(endState.newMessageText).toBe('')
-})
-test('should update new message text',() => {
-    const text = 'my name is Anton'
-
-    const action = updateNewMessageTextActionCreator(text)
-    const endState = dialogsReducer(startState, action)
-
-    expect(endState.newMessageText).toBe(text)
 })

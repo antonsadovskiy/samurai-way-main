@@ -1,7 +1,7 @@
-import profileReducer, {
+import {
+    profileReducer,
     addPostActionCreator,
     ProfilePageType, setUserProfile,
-    updateNewPostTextActionCreator,
     UserProfileType
 } from "./profileReducer";
 
@@ -22,11 +22,11 @@ beforeEach(() => {
             {id: 2, date: "21:08 28 Mar", likes: 13, comments: 5, message: "How are you doing today?"},
             {id: 3, date: "14:08 4 Apr", likes: 90, comments: 0, message: "I'm busy"},
         ],
-        newPostText: ''
+        status: ''
     }
 })
 
-test('should set correct user profile',() => {
+test('should set correct user profile', () => {
     const newUserProfile: UserProfileType = {
         aboutMe: 'looking for a job',
         contacts: {
@@ -57,23 +57,13 @@ test('should set correct user profile',() => {
     expect(endState.profile?.lookingForAJob).toBeTruthy()
 })
 
-test('should add new post to start of the array of posts',() => {
+test('should add new post to start of the array of posts', () => {
 
     const newPostText = 'Hello, my name is Anton'
-    startState = {...startState, newPostText: newPostText}
+    startState = {...startState}
 
-    const action = addPostActionCreator()
+    const action = addPostActionCreator(newPostText)
     const endState = profileReducer(startState, action)
 
-    expect(endState.newPostText).toBe('')
     expect(endState.posts[0].message).toBe(newPostText)
-})
-
-test('should update new post text',() => {
-    const text = 'how are you'
-
-    const action = updateNewPostTextActionCreator(text)
-    const endState = profileReducer(startState, action)
-
-    expect(endState.newPostText).toBe(text)
 })

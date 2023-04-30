@@ -14,11 +14,11 @@ export type DialogPageType = {
     dialogs: Array<DialogItemType>
     userMessages: Array<MessageItemType>
     friendMessages: Array<MessageItemType>
-    newMessageText: string
+    // newMessageText: string
 }
 
 export type AddMessageActionType = ReturnType<typeof addMessageActionCreator>
-export type UpdateNewMessageTextActionType = ReturnType<typeof updateNewMessageTextActionCreator>
+// export type UpdateNewMessageTextActionType = ReturnType<typeof updateNewMessageTextActionCreator>
 
 const initialState: DialogPageType = {
     dialogs: [
@@ -37,25 +37,26 @@ const initialState: DialogPageType = {
         {id: 2, message: "i'm good"},
         {id: 3, message: "thanks"},
     ],
-    newMessageText: ''
+    // newMessageText: ''
 }
 
-const dialogsReducer = (state: DialogPageType = initialState, action: ActionsTypes): DialogPageType => {
+export const dialogsReducer = (state: DialogPageType = initialState, action: AddMessageActionType): DialogPageType => {
 
     switch (action.type) {
-        case "UPDATE-NEW-MESSAGE-TEXT":
-            return {...state,
-                newMessageText: action.text}
+        // case "UPDATE-NEW-MESSAGE-TEXT":
+        //     return {...state,
+        //         newMessageText: action.text}
 
         case "ADD-MESSAGE":
             const newMessage: MessageItemType = {
                 id: 3,
-                message: state.newMessageText
+                message: action.newMessage
             }
-            if (state.newMessageText !== ''){
-                return {...state,
-                    userMessages: [...state.userMessages, newMessage],
-                    newMessageText: ''}
+            if (action.newMessage !== '') {
+                return {
+                    ...state,
+                    userMessages: [...state.userMessages, newMessage]
+                }
             }
             return state
 
@@ -64,15 +65,15 @@ const dialogsReducer = (state: DialogPageType = initialState, action: ActionsTyp
     }
 }
 
-export const addMessageActionCreator = () => {
+export const addMessageActionCreator = (newMessage: string) => {
     return {
-        type: "ADD-MESSAGE"
+        type: "ADD-MESSAGE",
+        newMessage
     } as const
 }
-export const updateNewMessageTextActionCreator = (text: string) => {
-    return {
-        type: "UPDATE-NEW-MESSAGE-TEXT",
-        text: text
-    } as const
-}
-export default dialogsReducer
+// export const updateNewMessageTextActionCreator = (text: string) => {
+//     return {
+//         type: "UPDATE-NEW-MESSAGE-TEXT",
+//         text: text
+//     } as const
+// }
