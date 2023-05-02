@@ -22,7 +22,7 @@ const Header: FC<HeaderPropsType> = (props) => {
                     props.isAuth
                         ? <div className={s.authorisedUser}>
                             <div>{props.login}</div>
-                            <button onClick={onClickLogOutHandler}>Log out</button>
+                            <button onClick={onClickLogOutHandler}>log out</button>
                         </div>
                         : <NavLink to={'/login'} className={s.notAuthorisedUser}>
                             Log in

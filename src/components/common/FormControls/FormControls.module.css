@@ -7,3 +7,12 @@
     margin-left: 10px;
     color: red;
 }
+.input {
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    color: #dfdfdf;
+    border: none;
+    background: rgba(139,145,150,.12);
+    width: 300px;
+}

@@ -14,3 +14,7 @@
     flex-direction: column;
     gap: 10px;
 }
+.formSummaryError {
+    border: 1px solid red;
+    padding: 5px;
+}

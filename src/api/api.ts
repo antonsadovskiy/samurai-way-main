@@ -39,6 +39,10 @@ export const authAPI = {
                 password: data.password,
                 rememberMe: data.rememberMe
             })
+    },
+    logout() {
+        return instance
+            .delete(`auth/login`)
     }
 }
 export const profileAPI = {

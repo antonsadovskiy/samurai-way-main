@@ -1,4 +1,4 @@
-import {getAuthUserDate, logoutUser, setAuthUserData} from "../../redux/auth/authReducer";
+import {logoutUser} from "../../redux/auth/authReducer";
 import {connect} from "react-redux";
 import Header from "./Header";
 import React from "react";
@@ -9,16 +9,11 @@ type mapStateToPropsType = {
     isAuth: boolean
 }
 type mapDispatchToPropsType = {
-    getAuthUserDate: () => void
     logoutUser: () => void
 }
 type PropsType = mapStateToPropsType & mapDispatchToPropsType
 
 class HeaderContainer extends React.Component<PropsType> {
-
-    componentDidMount() {
-        this.props.getAuthUserDate()
-    }
 
     render() {
         return (
@@ -36,4 +31,4 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     }
 }
 
-export default connect(mapStateToProps, {getAuthUserDate, logoutUser})(HeaderContainer)
+export default connect(mapStateToProps, {logoutUser})(HeaderContainer)

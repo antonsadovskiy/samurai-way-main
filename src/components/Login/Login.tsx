@@ -3,14 +3,13 @@ import s from './Login.module.css'
 import LoginReduxForm, {FormDataType} from "./LoginForm/LoginForm";
 
 type LoginPropsType = {
-    logInUser: (data: FormDataType) => void
-    authError: Array<string>
+    loginUser: (data: FormDataType) => void
 }
 
 const Login:FC<LoginPropsType> = (props) => {
 
     const onSubmit = (data: FormDataType) => {
-        props.logInUser(data)
+        props.loginUser(data)
     }
 
     return (

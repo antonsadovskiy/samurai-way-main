@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {usersAPI} from "../../api/api";
+import {AppActionsType, AppThunk} from "../redux-store";
 
 export type UserType = {
     name: string
@@ -33,7 +34,7 @@ type SetTotalUsersCount = ReturnType<typeof setTotalUsersCount>
 type FollowUserActionType = ReturnType<typeof followSuccess>
 type UnFollowUserActionType = ReturnType<typeof unFollowSuccess>
 
-type ActionsType = setIsButtonDisabledActionType| SetIsFetchingActionType | SetUsersActionType |
+export type UsersActionsType = setIsButtonDisabledActionType | SetIsFetchingActionType | SetUsersActionType |
     SetCurrentPage | SetTotalUsersCount |
     FollowUserActionType | UnFollowUserActionType
 
@@ -45,13 +46,15 @@ const initialState: UsersPageType = {
     isFetching: false,
     isButtonDisabled: []
 }
-export const usersReducer = (state: UsersPageType = initialState, action: ActionsType): UsersPageType => {
+export const usersReducer = (state: UsersPageType = initialState, action: UsersActionsType): UsersPageType => {
     switch (action.type) {
         case "SET-IS-BUTTON-DISABLED":
-            return {...state,
+            return {
+                ...state,
                 isButtonDisabled: action.newIsButtonDisabled
                     ? [...state.isButtonDisabled, action.userId]
-                    : state.isButtonDisabled.filter(userId => userId !== action.userId)}
+                    : state.isButtonDisabled.filter(userId => userId !== action.userId)
+            }
         case "SET-IS-FETCHING":
             return {...state, isFetching: action.newIsFetching}
         case 'SET-USERS':
@@ -61,11 +64,15 @@ export const usersReducer = (state: UsersPageType = initialState, action: Action
         case "SET-TOTAL-USERS-COUNT":
             return {...state, totalUsersCount: action.totalUsersCount}
         case 'FOLLOW-USER':
-            return {...state,
-                users: state.users.map(user => user.id === action.userId ? {...user, followed: true} : user)}
+            return {
+                ...state,
+                users: state.users.map(user => user.id === action.userId ? {...user, followed: true} : user)
+            }
         case 'UNFOLLOW-USER':
-            return {...state,
-                users: state.users.map(user => user.id === action.userId ? {...user, followed: false} : user)}
+            return {
+                ...state,
+                users: state.users.map(user => user.id === action.userId ? {...user, followed: false} : user)
+            }
         default:
             return state
     }
@@ -115,34 +122,37 @@ export const unFollowSuccess = (userId: number) => {
     } as const
 }
 
-export const getUsers = (currentPage: number, pageSize: number) => (dispatch: Dispatch) => {
-    dispatch(setIsFetching(true))
-    usersAPI.getUsers(currentPage, pageSize)
-        .then(data => {
-            dispatch(setCurrentPage(currentPage))
-            dispatch(setIsFetching(false))
-            dispatch(setUsers(data.items))
-            dispatch(setTotalUsersCount(data.totalCount))
-        })
-}
+export const getUsers = (currentPage: number, pageSize: number): AppThunk =>
+    (dispatch) => {
+        dispatch(setIsFetching(true))
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(setCurrentPage(currentPage))
+                dispatch(setIsFetching(false))
+                dispatch(setUsers(data.items))
+                dispatch(setTotalUsersCount(data.totalCount))
+            })
+    }
 
-export const follow = (userId: number) => (dispatch: Dispatch) => {
-    dispatch(setIsButtonDisabled(userId, true))
-    usersAPI.follow(userId)
-        .then(data => {
-            if (data.resultCode === 0) {
-                dispatch(followSuccess(userId))
-            }
-            dispatch(setIsButtonDisabled(userId, false))
-        })
-}
-export const unfollow = (userId: number) => (dispatch: Dispatch) => {
-    dispatch(setIsButtonDisabled(userId, true))
-    usersAPI.unFollow(userId)
-        .then(data => {
-            if (data.resultCode === 0) {
-                dispatch(unFollowSuccess(userId))
-            }
-            dispatch(setIsButtonDisabled(userId, false))
-        })
-}
+export const follow = (userId: number): AppThunk =>
+    (dispatch) => {
+        dispatch(setIsButtonDisabled(userId, true))
+        usersAPI.follow(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(followSuccess(userId))
+                }
+                dispatch(setIsButtonDisabled(userId, false))
+            })
+    }
+export const unfollow = (userId: number): AppThunk =>
+    (dispatch) => {
+        dispatch(setIsButtonDisabled(userId, true))
+        usersAPI.unFollow(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    dispatch(unFollowSuccess(userId))
+                }
+                dispatch(setIsButtonDisabled(userId, false))
+            })
+    }

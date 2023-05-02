@@ -1,5 +1,4 @@
 import avatar from "../../asssets/images/avatar.png";
-import {ActionsTypes} from "../profile/profileReducer";
 
 export type SideBarFriendType = {
     id: number
@@ -19,6 +18,6 @@ const initialState: SideBarType = {
     ]
 }
 
-export const sidebarReducer = (state: SideBarType = initialState, action: ActionsTypes): SideBarType => {
+export const sidebarReducer = (state: SideBarType = initialState, action: any): SideBarType => {
     return state
 }

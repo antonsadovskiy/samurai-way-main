@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import s from '../Login.module.css'
 import {Input} from "../../common/FormControls/FormControls";
@@ -11,7 +11,6 @@ export type FormDataType = {
 }
 
 const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
-
     return (
         <form onSubmit={props.handleSubmit} className={s.formContainer}>
             <div>
@@ -34,6 +33,7 @@ const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
                        component={'input'}/>
                 remember me
             </div>
+            { props.error && <div className={s.formSummaryError}>{props.error}</div> }
             <div>
                 <button>log in</button>
             </div>

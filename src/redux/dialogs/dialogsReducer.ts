@@ -1,5 +1,5 @@
 import avatar from "../../asssets/images/avatar.png";
-import {ActionsTypes} from "../profile/profileReducer";
+import {AppActionsType} from "../redux-store";
 
 export type MessageItemType = {
     id: number
@@ -17,8 +17,8 @@ export type DialogPageType = {
     // newMessageText: string
 }
 
-export type AddMessageActionType = ReturnType<typeof addMessageActionCreator>
-// export type UpdateNewMessageTextActionType = ReturnType<typeof updateNewMessageTextActionCreator>
+type AddMessageActionType = ReturnType<typeof addMessageActionCreator>
+export type DialogsActionsType = AddMessageActionType
 
 const initialState: DialogPageType = {
     dialogs: [
@@ -37,16 +37,10 @@ const initialState: DialogPageType = {
         {id: 2, message: "i'm good"},
         {id: 3, message: "thanks"},
     ],
-    // newMessageText: ''
 }
 
-export const dialogsReducer = (state: DialogPageType = initialState, action: AddMessageActionType): DialogPageType => {
-
+export const dialogsReducer = (state: DialogPageType = initialState, action: DialogsActionsType): DialogPageType => {
     switch (action.type) {
-        // case "UPDATE-NEW-MESSAGE-TEXT":
-        //     return {...state,
-        //         newMessageText: action.text}
-
         case "ADD-MESSAGE":
             const newMessage: MessageItemType = {
                 id: 3,
@@ -59,7 +53,6 @@ export const dialogsReducer = (state: DialogPageType = initialState, action: Add
                 }
             }
             return state
-
         default:
             return state
     }
@@ -71,9 +64,3 @@ export const addMessageActionCreator = (newMessage: string) => {
         newMessage
     } as const
 }
-// export const updateNewMessageTextActionCreator = (text: string) => {
-//     return {
-//         type: "UPDATE-NEW-MESSAGE-TEXT",
-//         text: text
-//     } as const
-// }
