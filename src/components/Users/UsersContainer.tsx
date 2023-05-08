@@ -1,13 +1,19 @@
 import {connect} from "react-redux";
-import {
-    UserType, setIsButtonDisabled, getUsers, follow, unfollow
-} from "../../redux/users/usersReducer";
+import {follow, getUsers, unfollow, UserType} from "../../redux/users/usersReducer";
 import {AppStateType} from "../../redux/redux-store";
 import React, {ComponentType} from "react";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPageSelector,
+    getIsButtonDisabledSelector,
+    getIsFetchingSelector,
+    getPageSizeSelector,
+    getTotalUsersCountSelector,
+    getUsersSelector
+} from "../../redux/users/usersSelectors";
 
 type MapStatePropsType = {
     users: Array<UserType>
@@ -50,14 +56,25 @@ class UsersContainer extends React.Component<UsersAPIPropsType> {
     }
 }
 
+// const MapStateToProps = (state: AppStateType): MapStatePropsType => {
+//     return {
+//         users: state.usersPage.users,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         isFetching: state.usersPage.isFetching,
+//         isButtonDisabled: state.usersPage.isButtonDisabled
+//     }
+// }
+
 const MapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        isButtonDisabled: state.usersPage.isButtonDisabled
+        users: getUsersSelector(state),
+        pageSize: getPageSizeSelector(state),
+        totalUsersCount: getTotalUsersCountSelector(state),
+        currentPage: getCurrentPageSelector(state),
+        isFetching: getIsFetchingSelector(state),
+        isButtonDisabled: getIsButtonDisabledSelector(state)
     }
 }
 

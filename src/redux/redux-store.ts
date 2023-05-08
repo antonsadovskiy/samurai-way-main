@@ -23,7 +23,6 @@ export type AppActionsType = AuthActionsType | ProfileActionsType |
     DialogsActionsType | UsersActionsType | AppWithReducersActionsType
 
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, AppActionsType>
-// export type AppThunk<ReturnType = void> = ThunkDispatch<AppStateType, unknown, AppActionsType>
 
 let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 export default store
