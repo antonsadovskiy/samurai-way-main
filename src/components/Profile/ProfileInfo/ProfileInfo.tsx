@@ -5,6 +5,7 @@ import Avatar from "./Avatar/Avatar";
 import About from "./About/About";
 import {UserProfileType} from "../../../redux/profile/profileReducer";
 import Status from "./Status/Status";
+import StatusWithHooks from "./Status/StatusWithHooks";
 
 type ProfileInfoPropsType = {
     profile: UserProfileType
@@ -22,7 +23,7 @@ const ProfileInfo:FC<ProfileInfoPropsType> = (props) => {
                        fullName={props.profile.fullName}
                        lookingForAJob={props.profile.lookingForAJob}
                        lookingForAJobDescription={props.profile.lookingForAJobDescription}/>
-                <Status status={props.status} updateStatus={props.updateStatus}/>
+                <StatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             </div>
         </div>
     );
