@@ -1,11 +1,13 @@
 import React from 'react';
-import preloader from "../../../asssets/images/preloader.svg";
 import s from './Preloader.module.css'
+import {Spin} from "antd";
 
 const Preloader = () => {
     return (
         <div className={s.preloader}>
-            <img src={preloader} alt="loading" width={50} height={50}/>
+            <Spin tip="Loading" size="large">
+                <div className="content"/>
+            </Spin>
         </div>
     );
 };

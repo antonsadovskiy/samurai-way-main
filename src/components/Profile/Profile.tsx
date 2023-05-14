@@ -11,16 +11,20 @@ type ProfilePropsType = {
     updateStatus: (newStatus: string) => void
 }
 
-const Profile:FC<ProfilePropsType> = (props) => {
+const Profile: FC<ProfilePropsType> = (props) => {
     return (
         !props.profile ?
             <Preloader/>
             :
             <div className={s.mainContainer}>
-                <ProfileInfo profile={props.profile}
-                             status={props.status}
-                             updateStatus={props.updateStatus}/>
-                <MyPostsContainer/>
+                <div className={s.profileInfoContainer}>
+                    <ProfileInfo profile={props.profile}
+                                 status={props.status}
+                                 updateStatus={props.updateStatus}/>
+                </div>
+                <div className={s.postsContainer}>
+                    <MyPostsContainer/>
+                </div>
             </div>
     );
 }

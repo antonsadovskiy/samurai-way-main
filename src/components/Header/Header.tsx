@@ -1,6 +1,8 @@
 import React, {FC} from "react";
 import {NavLink} from "react-router-dom";
 import s from "./Header.module.css"
+import {Header} from "antd/lib/layout/layout";
+import {Button} from "antd";
 
 type HeaderPropsType = {
     login: string | null
@@ -8,29 +10,28 @@ type HeaderPropsType = {
     logoutUser: () => void
 }
 
-const Header: FC<HeaderPropsType> = (props) => {
+const AppHeader: FC<HeaderPropsType> = (props) => {
 
     const onClickLogOutHandler = () => {
         props.logoutUser()
     }
 
     return (
-        <div className={s.headerContainer}>
-            <h3>всенаместе</h3>
+        <Header>
             <div className={s.loginBlock}>
                 {
                     props.isAuth
                         ? <div className={s.authorisedUser}>
                             <div>{props.login}</div>
-                            <button onClick={onClickLogOutHandler}>log out</button>
+                            <Button onClick={onClickLogOutHandler} type="primary">log out</Button>
                         </div>
                         : <NavLink to={'/login'} className={s.notAuthorisedUser}>
                             Log in
                         </NavLink>
                 }
             </div>
-        </div>
+        </Header>
     );
 }
 
-export default Header;
+export default AppHeader;

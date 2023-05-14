@@ -1,6 +1,5 @@
-import {Dispatch} from "redux";
 import {usersAPI} from "../../api/api";
-import {AppActionsType, AppThunk} from "../redux-store";
+import {AppThunk} from "../redux-store";
 
 export type UserType = {
     name: string
@@ -12,10 +11,6 @@ export type UserType = {
     }
     status: string
     followed: boolean
-    // location: {
-    //     country: string
-    //     city: string
-    // }
 }
 export type UsersPageType = {
     users: Array<UserType>

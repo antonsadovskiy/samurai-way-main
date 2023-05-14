@@ -13,7 +13,7 @@ const StatusWithHooks: FC<StatusPropsType> = (props) => {
 
     useEffect(() => {
         setStatus(props.status)
-    }, [])
+    }, [props.status])
 
     const activateEditMode = (e: MouseEvent<HTMLSpanElement>) => setEditMode(true)
     const deactivateEditMode = (e: FocusEvent<HTMLInputElement>) => {

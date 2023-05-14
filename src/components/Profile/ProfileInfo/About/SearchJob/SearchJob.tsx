@@ -12,17 +12,17 @@ const SearchJob: FC<StatusPropsType> = (props) => {
     return (
         props.lookingForAJob ?
             <div>
-                <div className={s.status}>Job status:
+                <div className={s.status}>
                     <img src={openedEyes} alt="looking for a job" width={25} height={25}/>
                 </div>
                 <p className={s.statusText}>{props.lookingForAJobDescription}</p>
             </div>
             :
             <div>
-                <div className={s.status}>Status:
-                    <img src={closedEyes} alt="don't looking for a job" width={25} height={25}/>
-                </div>
-                <div className={s.padding}/>
+                {/*<div className={s.status}>*/}
+                {/*    <img src={closedEyes} alt="don't looking for a job" width={25} height={25}/>*/}
+                {/*</div>*/}
+                {/*<div className={s.padding}/>*/}
             </div>
     );
 };

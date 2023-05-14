@@ -1,30 +1,18 @@
-.headerContainer {
-    z-index: 1;
-    width: 1000px;
-    position: fixed;
-    height: 70px;
-    background-color:#222222;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: white;
-    border-radius: 10px;
-    border: 1px solid darkslategrey;
-}
-
-.headerContainer h3 {
-    margin: 0 0 0 35px;
-    text-transform: uppercase;
-}
 .loginBlock {
     margin-right: 30px;
-
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 .authorisedUser {
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 30px;
+    color: white;
 }
 .notAuthorisedUser {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     color: white;
 }

@@ -6,6 +6,7 @@ import {MyPostsPropsType} from "./MyPostsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, minLengthCreator, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../common/FormControls/FormControls";
+import {Button} from "antd";
 
 type FormPropsType = {
     newPostText: string
@@ -40,7 +41,7 @@ const AddPostForm: FC<InjectedFormProps<FormPropsType>> = (props) => {
                    placeholder={'What\'s new?'}
                    validate={[required, maxLength, minLength]}/>
             <button className={s.button}>
-                <img src={sendButton} alt="send"/>
+                <Button>send</Button>
             </button>
         </form>
     )

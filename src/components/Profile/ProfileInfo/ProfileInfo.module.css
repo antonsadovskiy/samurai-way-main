@@ -1,15 +1,13 @@
-
+.profile {
+    width: 30%;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 300px;
+}
 .backgroundImage{
     width: 100%;
     border-radius: 10px;
-}
-
-.aboutContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 150px;
-    position: relative;
-    left: 30px;
-    top: -120px;
 }

@@ -1,3 +1,4 @@
+import TextArea from 'antd/es/input/TextArea';
 import React from 'react';
 import s from './FormControls.module.css'
 
@@ -15,7 +16,7 @@ const FormControl = ({input, meta, children, ...props}: any) => {
 export const Textarea = (props: any) => {
     const {input, meta, children, ...restProps} = props
     return (
-        <FormControl {...props}><textarea {...input} {...restProps}/></FormControl>
+        <FormControl {...props}><TextArea {...input} {...restProps}/></FormControl>
     );
 };
 export const Input = (props: any) => {

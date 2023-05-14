@@ -1,6 +1,6 @@
 import {logoutUser} from "../../redux/auth/authReducer";
 import {connect} from "react-redux";
-import Header from "./Header";
+import AppHeader from "./Header";
 import React from "react";
 import {AppStateType} from "../../redux/redux-store";
 
@@ -17,7 +17,7 @@ class HeaderContainer extends React.Component<PropsType> {
 
     render() {
         return (
-            <Header login={this.props.login}
+            <AppHeader login={this.props.login}
                     isAuth={this.props.isAuth}
                     logoutUser={this.props.logoutUser}/>
         );

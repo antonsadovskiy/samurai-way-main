@@ -5,14 +5,14 @@
     gap: 10px;
     color: rgb(210, 210, 210);
 }
-.usersContainer button {
-    width: 100px;
+.users {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 .user {
-    width: 80%;
-    background-color: #222222;
-    border-radius: 10px;
-    border: 1px solid darkslategrey;
     display: flex;
     align-items: center;
 }
@@ -49,8 +49,4 @@
 }
 .selectedPage {
     font-weight: bold;
-}
-.pagesNavigation {
-    display: flex;
-    gap: 3px;
 }

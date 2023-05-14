@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://antonsadovskiy.github.io/samurai-way-main",
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "@emotion/react": "^11.10.8",
     "@emotion/styled": "^11.10.8",
     "@mui/icons-material": "^5.11.16",
@@ -11,7 +12,7 @@
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.0.0",
     "@testing-library/user-event": "13.2.1",
-    "antd": "4.18.7",
+    "antd": "^5.4.7",
     "axios": "0.26.0",
     "classnames": "2.3.1",
     "formik": "2.2.9",

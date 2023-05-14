@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import userPhotoNotFound from "../../../../asssets/images/ava.jpg";
 import s from './Avatar.module.css'
+import { Image } from 'antd';
 
 type AvatarPropsType = {
     photos: {
@@ -14,8 +15,8 @@ const Avatar: FC<AvatarPropsType> = (props) => {
         <div className={s.avatar}>
             {
                 props.photos.large
-                    ? <img src={props.photos.large} alt={"avatar"}/>
-                    : <img src={userPhotoNotFound} alt={"avatar"}/>
+                    ? <Image width={160} src={props.photos.large}/>
+                    : <Image width={160} src={userPhotoNotFound}/>
             }
         </div>
     );

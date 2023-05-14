@@ -19,8 +19,7 @@ const About: FC<AboutPropsType> = (props) => {
                 <span>user.age</span><br/>
                 <span>Birth: user.dateBirth</span><br/>
                 <span>Education: user.education</span><br/>
-                <SearchJob lookingForAJob={props.lookingForAJob}
-                           lookingForAJobDescription={props.lookingForAJobDescription}/>
+
             </div>
         </div>
     );
