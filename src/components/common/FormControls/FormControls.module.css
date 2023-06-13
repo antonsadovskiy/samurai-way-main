@@ -2,8 +2,10 @@
 .formControl.error textarea {
     border: 1px solid red;
 }
-
 .formControl.error span {
     margin-left: 10px;
     color: red;
+}
+.input {
+    width: 200px;
 }

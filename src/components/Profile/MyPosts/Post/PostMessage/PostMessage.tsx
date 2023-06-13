@@ -8,9 +8,9 @@ type PostMessagePropsType = {
 
 const PostMessage:FC<PostMessagePropsType> = ({message}) => {
     return (
-        <div className={s.postMessage}>
+        <p>
             {message}
-        </div>
+        </p>
     );
 };
 

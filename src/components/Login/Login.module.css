@@ -1,9 +1,6 @@
 .loginContainer {
     color: rgb(210, 210, 210);
     padding: 30px;
-    background-color: #222222;
-    border-radius: 10px;
-    border: 1px solid darkslategrey;
 }
 .loginContainer > h1 {
     text-align: center;
@@ -17,4 +14,14 @@
 .formSummaryError {
     border: 1px solid red;
     padding: 5px;
+}
+.button {
+    content: none;
+    background: none;
+    border: none;
+    margin: 5px 0 0 0;
+    padding: 0;
+}
+.myButton {
+    width: 100%;
 }

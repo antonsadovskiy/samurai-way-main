@@ -1,7 +1,7 @@
 import {Dispatch} from "redux";
-import {profileAPI} from "../../api/api";
 import {DialogsActionsType} from "../dialogs/dialogsReducer";
 import {AppActionsType, AppThunk} from "../redux-store";
+import {profileAPI} from "../../api/profileAPI";
 
 export type UserProfileType = {
     aboutMe: string

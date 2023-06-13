@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import s from "./DialogItem.module.css";
 import {NavLink} from "react-router-dom";
+import {Avatar, List} from "antd";
 
 export type DialogItemPropsType = {
     id: number
@@ -8,11 +9,16 @@ export type DialogItemPropsType = {
     avatar: string
 }
 
-const DialogItem:FC<DialogItemPropsType> = ({id, avatar, name}) => {
+const DialogItem: FC<DialogItemPropsType> = ({id, avatar, name}) => {
     return (
         <NavLink className={s.dialogItem} activeClassName={s.active} to={"/dialogs/" + id}>
-            <img className={s.avatar} src={avatar} alt="avatar"/>
-            {name}
+            <List.Item>
+                <List.Item.Meta
+                    avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${id}`}/>}
+                    title={<a href="https://ant.design">{name}</a>}
+                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                />
+            </List.Item>
         </NavLink>
     );
 };
