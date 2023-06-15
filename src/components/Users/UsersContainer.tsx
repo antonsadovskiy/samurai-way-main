@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {changeFollowUser, getUsers, setPageSize, UserType} from "../../redux/users/usersReducer";
+import {follow, getUsers, setPageSize, unfollow, UserType} from "../../redux/users/usersReducer";
 import {AppStateType} from "../../redux/redux-store";
 import React, {ComponentType} from "react";
 import Users from "./Users";
@@ -25,7 +25,8 @@ type MapStatePropsType = {
 }
 type MapDispatchToProps = {
   getUsers: (currentPage: number, pageSize: number) => void
-  changeFollowUser: (userId: number, follow: boolean) => void
+  follow: (userId: number) => void
+  unfollow: (userId: number) => void
   setPageSize: (pageSize: number) => void
 }
 type UsersAPIPropsType = MapStatePropsType & MapDispatchToProps
@@ -41,6 +42,13 @@ class UsersContainer extends React.Component<UsersAPIPropsType> {
     this.props.getUsers(currentPage, pageSize)
   }
 
+  changeFollowUser = (userId: number, follow: boolean) => {
+    if (follow) {
+      this.props.follow(userId)
+    } else {
+      this.props.unfollow(userId)
+    }
+  }
 
   render() {
     return (
@@ -51,7 +59,7 @@ class UsersContainer extends React.Component<UsersAPIPropsType> {
                  totalUsersCount={this.props.totalUsersCount}
                  currentPage={this.props.currentPage}
                  onChangePageHandler={this.onChangePageHandler}
-                 changeFollowUser={this.props.changeFollowUser}
+                 changeFollowUser={this.changeFollowUser}
                  isButtonDisabled={this.props.isButtonDisabled}/>
     )
   }
@@ -70,7 +78,7 @@ const MapStateToProps = (state: AppStateType): MapStatePropsType => {
 
 export default compose<ComponentType>(
   connect(MapStateToProps, {
-    getUsers, changeFollowUser, setPageSize
+    getUsers, follow, unfollow, setPageSize
   }),
   withAuthRedirect,
 )(UsersContainer)

@@ -2,9 +2,7 @@ import {instance} from "./instance";
 
 export const profileAPI = {
   setProfile(userId: string) {
-    return instance
-      .get(`profile/${userId}`)
-      .then(res => res.data)
+    return instance.get(`profile/${userId}`)
   },
   getStatus(userId: string) {
     return instance

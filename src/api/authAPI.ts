@@ -4,9 +4,7 @@ import {instance} from "./instance";
 
 export const authAPI = {
   auth() {
-    return instance
-      .get(`auth/me`)
-      .then(res => res.data)
+    return instance.get(`auth/me`)
   },
   login(data: FormDataType) {
     return instance

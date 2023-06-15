@@ -1,54 +1,43 @@
 import React, {FC} from 'react';
 import s from './User.module.css'
-import avatar from '../../../asssets/images/user-photo-not-found.png'
+import avatar from "../../../asssets/images/avatar.png";
+import {Button, Card} from "antd";
+import {NavLink} from "react-router-dom";
+import {UserType} from "../../../redux/users/usersReducer";
 
 type UserPropsType = {
-    id: number
-    name: string
-    photos: {
-        small: string
-        large: string
-    }
-    status: string
-    followed: boolean
-    // location: {
-    //     country: string
-    //     city: string
-    // }
-    follow: (userId: number) => void
-    unFollow: (userId: number) => void
+  user: UserType
+  isButtonDisabled: Array<number>
+  follow: (userId: number) => void
+  unFollow: (userId: number) => void
 }
 
-const User:FC<UserPropsType> = (props) => {
+const User: FC<UserPropsType> = (props) => {
 
-    const followHandler = () => {
-        props.follow(props.id)
-    }
-    const unFollowHandler = () => {
-        props.unFollow(props.id)
-    }
-    return (
-        <div className={s.user}>
-            <div className={s.avaAndButton}>
-                <img src={props.photos.small? props.photos.small : avatar} alt=""/>
-                {
-                    props.followed
-                        ? <button onClick={unFollowHandler}>unfollow</button>
-                        : <button onClick={followHandler}>follow</button>
-                }
-            </div>
-            <div className={s.info}>
-                <div className={s.userNameAndStatus}>
-                    <div className={s.userName}>{props.name}</div>
-                    <div className={s.userStatus}>{props.status}</div>
-                </div>
-                <div className={s.userAddress}>
-                    <div className={s.userCountry}>{'props.location.country'}</div>
-                    <div className={s.userCity}>{'props.location.city'}</div>
-                </div>
-            </div>
+  const followHandler = () => props.follow(props.user.id)
+  const unfollowHandler = () => props.unFollow(props.user.id)
+
+  return (
+    <div className={s.user}>
+      <Card title={props.user.name} bordered={false} style={{width: 300}}>
+        <div className={s.avaAndButton}>
+          <NavLink to={'/profile/' + props.user.id}>
+            <img width={50} height={50} src={props.user.photos.small ? props.user.photos.small : avatar} alt=""/>
+          </NavLink>
+          {
+            props.user.followed
+              ? <Button type={'default'} size={'small'}
+                        disabled={props.isButtonDisabled.some(id => id === props.user.id)}
+                        onClick={unfollowHandler}>unfollow</Button>
+              : <Button type={'default'} size={'small'}
+                        disabled={props.isButtonDisabled.some(id => id === props.user.id)}
+                        onClick={followHandler}>follow</Button>
+          }
         </div>
-    );
+        <p>status: {props.user.status ? props.user.status : 'no status'}</p>
+      </Card>
+    </div>
+  );
 };
 
 export default User;

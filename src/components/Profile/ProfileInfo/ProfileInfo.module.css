@@ -1,13 +1,16 @@
-.profile {
-    width: 30%;
-}
 .card {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 300px;
+    max-width: 500px;
+    width: 100%;
 }
 .backgroundImage{
     width: 100%;
     border-radius: 10px;
+}
+.cardInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
 }

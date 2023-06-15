@@ -61,10 +61,12 @@ export const usersReducer = (state: UsersPageType = initialState, action: UsersA
     case "SET-TOTAL-USERS-COUNT":
       return {...state, totalUsersCount: action.totalUsersCount}
     case 'CHANGE-FOLLOW':
-      debugger
       return {
         ...state,
-        users: state.users.map(user => user.id === action.userId ? {...user, followed: action.follow} : user)
+        users: state.users.map(user => user.id === action.userId
+          ? {...user, followed: action.follow}
+          : user
+        )
       }
     default:
       return state
@@ -109,7 +111,6 @@ export const setTotalUsersCount = (totalUsersCount: number) => {
   } as const
 }
 export const changeFollow = (userId: number, follow: boolean) => {
-  debugger
   return {
     type: 'CHANGE-FOLLOW',
     userId,
@@ -118,27 +119,41 @@ export const changeFollow = (userId: number, follow: boolean) => {
 }
 
 export const getUsers = (currentPage: number, pageSize: number): AppThunk =>
-  (dispatch) => {
+  async (dispatch) => {
     dispatch(setIsFetching(true))
-    usersAPI.getUsers(currentPage, pageSize)
-      .then(data => {
-        dispatch(setCurrentPage(currentPage))
-        dispatch(setIsFetching(false))
-        dispatch(setUsers(data.items))
-        dispatch(setTotalUsersCount(data.totalCount))
-      })
+    try {
+      const data = await usersAPI.getUsers(currentPage, pageSize)
+      dispatch(setCurrentPage(currentPage))
+      dispatch(setIsFetching(false))
+      dispatch(setUsers(data.items))
+      dispatch(setTotalUsersCount(data.totalCount))
+    } catch (e) {
+      console.error(e)
+    }
   }
-
-
-  // TODO fix follow/unfollow bug
-export const changeFollowUser = (userId: number, follow: boolean): AppThunk =>
-  (dispatch) => {
+export const follow = (userId: number): AppThunk =>
+  async (dispatch) => {
     dispatch(setIsButtonDisabled(userId, true))
-    usersAPI.follow(userId)
-      .then(data => {
-        if (data.resultCode === 0) {
-          dispatch(changeFollow(userId, follow))
-        }
-        dispatch(setIsButtonDisabled(userId, false))
-      })
+    try {
+      const res = await usersAPI.follow(userId)
+      if (res.resultCode === 0) {
+        dispatch(changeFollow(userId, true))
+      }
+      dispatch(setIsButtonDisabled(userId, false))
+    } catch (e) {
+      console.error(e)
+    }
+  }
+export const unfollow = (userId: number): AppThunk =>
+  async (dispatch) => {
+    dispatch(setIsButtonDisabled(userId, true))
+    try {
+      const res = await usersAPI.unFollow(userId)
+      if (res.resultCode === 0) {
+        dispatch(changeFollow(userId, false))
+      }
+      dispatch(setIsButtonDisabled(userId, false))
+    } catch (e) {
+      console.error(e)
+    }
   }

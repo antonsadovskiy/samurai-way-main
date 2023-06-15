@@ -1,15 +1,14 @@
 import React, {FC} from 'react';
 import {UserType} from "../../redux/users/usersReducer";
 import s from "./Users.module.css";
-import avatar from "../../asssets/images/avatar.png";
-import {NavLink} from 'react-router-dom';
-import {Button, Card, Pagination} from "antd";
+import User from "./User/User";
+import MyPagination from "../common/Pagination/MyPagination";
 
 type UsersPropsType = {
   users: Array<UserType>
   pageSize: number
-  totalUsersCount: number
   currentPage: number
+  totalUsersCount: number
   onChangePageHandler: (currentPage: number, pageSize: number) => void
   changeFollowUser: (userId: number, follow: boolean) => void
   isButtonDisabled: Array<number>
@@ -27,35 +26,18 @@ const Users: FC<UsersPropsType> = (props) => {
 
   return (
     <div className={s.usersContainer}>
-      <div className={s.pagesNavigation}>
-        <Pagination current={props.currentPage}
-                    total={pagesCount}
-                    pageSize={props.pageSize}
-                    pageSizeOptions={[8, 16, 32, 64]}
-                    onChange={changePageHandler}/>
-      </div>
+      <MyPagination pageSize={props.pageSize}
+                    pagesCount={pagesCount}
+                    currentPage={props.currentPage}
+                    changePageHandler={changePageHandler}/>
       <div className={s.users}>
         {
           props.users.map(u =>
-            <div className={s.user}>
-              <Card title={u.name} bordered={false} style={{width: 300}}>
-                <div className={s.avaAndButton}>
-                  <NavLink to={'/profile/' + u.id}>
-                    <img src={u.photos.small ? u.photos.small : avatar} alt=""/>
-                  </NavLink>
-                  {
-                    u.followed
-                      ? <Button type={'default'} size={'small'}
-                                disabled={props.isButtonDisabled.some(id => id === u.id)}
-                                onClick={() => unfollowHandler(u.id)}>unfollow</Button>
-                      : <Button type={'default'} size={'small'}
-                                disabled={props.isButtonDisabled.some(id => id === u.id)}
-                                onClick={() => followHandler(u.id)}>follow</Button>
-                  }
-                </div>
-                <p>status: {u.status ? u.status : 'no status'}</p>
-              </Card>
-            </div>
+            <User key={u.id}
+                  user={u}
+                  isButtonDisabled={props.isButtonDisabled}
+                  follow={followHandler}
+                  unFollow={unfollowHandler}/>
           )
         }
       </div>

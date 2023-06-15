@@ -20,7 +20,6 @@ import Preloader from "./components/common/Preloader/Preloader";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
 import {
-  CodepenOutlined,
   CustomerServiceOutlined,
   GlobalOutlined,
   HomeOutlined,
@@ -91,7 +90,7 @@ class App extends React.Component<PropsType> {
       this.props.initialized
         ? <Layout style={{minHeight: '100vh'}}>
           <Sider collapsible collapsed={this.state.collapsed} onCollapse={(value) => this.changeCollapse(value)}>
-            <div style={{height: 32, margin: 16, background: 'rgba(255, 255, 255, 0.2)'}}>ВСЕНАМЕСТЕ</div>
+            <div style={{height: 32, margin: 16}}/>
             <Menu theme="dark" mode="inline" items={items}/>
           </Sider>
           <Layout className="site-layout">
@@ -104,9 +103,7 @@ class App extends React.Component<PropsType> {
               <Route path="/news" render={() => <News/>}/>
               <Route path="/music" render={() => <Music/>}/>
               <Route path="/settings" render={() => <Settings/>}/>
-              <div className='loginContainer'>
-                <Route path="/login" render={() => <LoginContainer/>}/>
-              </div>
+              <Route path="/login" render={() => <LoginContainer/>}/>
             </Content>
             <Footer style={{textAlign: 'center'}}>Ant Design ©2023 Created by Ant UED</Footer>
           </Layout>

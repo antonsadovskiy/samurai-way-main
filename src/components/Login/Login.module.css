@@ -1,5 +1,11 @@
 .loginContainer {
-    color: rgb(210, 210, 210);
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 350px;
+    width: 100%;
     padding: 30px;
 }
 .loginContainer > h1 {

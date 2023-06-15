@@ -1,75 +1,58 @@
-import React, {ChangeEvent, MouseEvent, FC} from 'react';
+import React, {ChangeEvent, FC, FocusEvent, KeyboardEvent, useEffect, useState} from 'react';
 import s from './Status.module.css'
+import {EditOutlined} from "@ant-design/icons";
+import {Button, Input} from "antd";
 
 type StatusPropsType = {
-    status: string
-    updateStatus: (newStatus: string) => void
+  status: string
+  updateStatus: (newStatus: string) => void
 }
 
-class Status extends React.Component<StatusPropsType> {
+const Status: FC<StatusPropsType> = (props) => {
 
-    state = {
-        editMode: false,
-        status: this.props.status
-    }
+  const [editMode, setEditMode] = useState(false)
+  const [status, setStatus] = useState(props.status)
 
-    activateEditMode = () => {
-        this.setState({
-            editMode: true
-        })
-    }
-    deactivateEditMode = () => {
-        this.setState({
-            editMode: false
-        })
-        this.props.updateStatus(this.state.status)
-    }
-    onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        this.setState({
-            status: e.currentTarget.value
-        })
-    }
+  useEffect(() => {
+    setStatus(props.status)
+  }, [props.status])
 
-    componentDidUpdate(prevProps: Readonly<StatusPropsType>, prevState: Readonly<{}>) {
-        if (prevProps.status !== this.props.status) {
-            this.setState({
-                status: this.props.status
-            })
-        }
-    }
+  const activateEditMode = () => setEditMode(true)
+  const deactivateEditMode = (e: FocusEvent<HTMLInputElement>) => {
+    props.updateStatus(e.currentTarget.value)
+    setEditMode(false)
+  }
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setStatus(e.currentTarget.value)
+  }
 
-    render() {
-        return (
-            <div className={s.statusContainer}>
-                {
-                    this.state.editMode
-                        ? <div>
-                            <input value={this.state.status}
-                                   onBlur={this.deactivateEditMode}
-                                   onChange={this.onChangeHandler}
-                                   autoFocus/>
-                        </div>
-                        : <div>
-                            <span onDoubleClick={this.activateEditMode}>{this.props.status || "no status"}</span>
-                        </div>
-                }
+  const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      props.updateStatus(e.currentTarget.value)
+      setEditMode(false)
+    }
+  }
+
+  return (
+    <div className={s.statusContainer}>
+      {
+        editMode
+          ? (
+            <Input value={status}
+                   onBlur={deactivateEditMode}
+                   onChange={onChangeHandler}
+                   onKeyPress={onKeyPressHandler}
+                   autoFocus/>
+          )
+          : (
+            <div className={s.status}>
+              <span>{props.status || "no status"}</span>
+              <Button onClick={activateEditMode} icon={<EditOutlined/>}/>
             </div>
-        );
-    }
+          )
+      }
+    </div>
+  );
 }
-
-// const Status:FC<StatusPropsType> = (props) => {
-//
-//     return (
-//         <div className={s.statusContainer}>
-//             <div>
-//                 <span>{props.status}</span>
-//             </div>
-//             <div>
-//                 <input value={props.status}/>
-//             </div>
-//         </div>
-//     );
-// };
 
 export default Status;
