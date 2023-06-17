@@ -13,19 +13,20 @@ type ProfilePropsType = {
 
 const Profile: FC<ProfilePropsType> = (props) => {
   return (
-    !props.profile ?
-      <Preloader/>
-      :
-      <div className={s.mainContainer}>
-        <div className={s.profileInfoContainer}>
-          <ProfileInfo profile={props.profile}
-                       status={props.status}
-                       updateStatus={props.updateStatus}/>
+    !props.profile
+      ? <Preloader/>
+      : (
+        <div className={s.mainContainer}>
+          <div className={s.profileInfoContainer}>
+            <ProfileInfo profile={props.profile}
+                         status={props.status}
+                         updateStatus={props.updateStatus}/>
+          </div>
+          <div className={s.postsContainer}>
+            <MyPostsContainer/>
+          </div>
         </div>
-        <div className={s.postsContainer}>
-          <MyPostsContainer/>
-        </div>
-      </div>
+      )
   );
 }
 
