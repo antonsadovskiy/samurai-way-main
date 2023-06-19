@@ -12,6 +12,9 @@
     text-align: center;
     margin: 0 0 20px 0;
 }
+.loginContainer p {
+    margin: 5px;
+}
 .formContainer {
     display: flex;
     flex-direction: column;

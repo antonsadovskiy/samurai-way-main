@@ -1,7 +1,7 @@
 import TextArea from 'antd/es/input/TextArea';
 import React from 'react';
 import s from './FormControls.module.css'
-import {Button, Checkbox, Input, Space} from "antd";
+import {Checkbox, Input} from "antd";
 
 const FormControl = ({input, meta, children, ...props}: any) => {
   return (
@@ -22,6 +22,7 @@ export const Textarea = (props: any) => {
 };
 export const MyInput = (props: any) => {
   const {input, meta, children, ...restProps} = props
+  debugger
   return (
     <FormControl {...props}><Input {...input} {...props}/></FormControl>
   );

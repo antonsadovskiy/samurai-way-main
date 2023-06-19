@@ -14,6 +14,9 @@ const Login: FC<LoginPropsType> = (props) => {
 
   return (
     <div className={s.loginContainer}>
+      <p>For free use: </p>
+      <p>Email: free@samuraijs.com</p>
+      <p>Password: free</p>
       <h1>Login</h1>
       <LoginReduxForm onSubmit={onSubmit}/>
     </div>

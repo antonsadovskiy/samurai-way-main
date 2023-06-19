@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import userPhotoNotFound from "../../../../asssets/images/ava.jpg";
+import userPhotoNotFound from "../../../../asssets/images/empty.jpg";
 import s from './Avatar.module.css'
 import { Image } from 'antd';
 

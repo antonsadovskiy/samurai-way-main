@@ -1,4 +1,4 @@
-import avatar from "../../asssets/images/avatar.png";
+import avatar from "../../asssets/images/empty.jpg";
 
 export type MessageItemType = {
   id: number

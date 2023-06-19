@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import s from './User.module.css'
-import avatar from "../../../asssets/images/avatar.png";
+import avatar from "../../../asssets/images/empty.jpg";
 import {Button, Card} from "antd";
 import {NavLink} from "react-router-dom";
 import {UserType} from "../../../redux/users/usersReducer";
