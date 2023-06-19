@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {ComponentType} from 'react';
+import {compose} from "redux";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 const News = () => {
   return (
@@ -8,4 +10,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default compose<ComponentType>(withAuthRedirect)(News);

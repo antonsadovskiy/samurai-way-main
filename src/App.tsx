@@ -71,43 +71,41 @@ const items: MenuItem[] = [
 
 class App extends React.Component<PropsType> {
 
-  state = {
-    collapsed: false,
-  }
+  state = {collapsed: false}
 
   componentDidMount() {
     this.props.initializeApp()
   }
 
   changeCollapse(value: boolean) {
-    this.setState({
-      collapsed: value
-    })
+    this.setState({collapsed: value})
   }
 
   render() {
     return (
       this.props.initialized
-        ? <Layout style={{minHeight: '100vh'}}>
-          <Sider collapsible collapsed={this.state.collapsed} onCollapse={(value) => this.changeCollapse(value)}>
-            <div style={{height: 32, margin: 16}}/>
-            <Menu theme="dark" mode="inline" items={items}/>
-          </Sider>
-          <Layout className="site-layout">
-            <HeaderContainer/>
-            <Content style={{margin: '10px'}}>
-              <Route path={"/samurai-way-main"} render={() => <Redirect to={"/profile"}/>}/>
-              <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-              <Route path="/dialogs" render={() => <DialogsContainer/>}/>
-              <Route path="/users" render={() => <UsersContainer/>}/>
-              <Route path="/news" render={() => <News/>}/>
-              <Route path="/music" render={() => <Music/>}/>
-              <Route path="/settings" render={() => <Settings/>}/>
-              <Route path="/login" render={() => <LoginContainer/>}/>
-            </Content>
-            <Footer style={{textAlign: 'center'}}>Ant Design ©2023 Created by Ant UED</Footer>
+        ? (
+          <Layout style={{minHeight: '100vh'}}>
+            <Sider collapsible collapsed={this.state.collapsed} onCollapse={(value) => this.changeCollapse(value)}>
+              <div style={{height: 32, margin: 16}}/>
+              <Menu theme="dark" mode="inline" items={items}/>
+            </Sider>
+            <Layout className="site-layout">
+              <HeaderContainer/>
+              <Content style={{margin: '10px'}}>
+                <Route path={"/samurai-way-main"} render={() => <Redirect to={"/profile"}/>}/>
+                <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
+                <Route path="/dialogs" render={() => <DialogsContainer/>}/>
+                <Route path="/users" render={() => <UsersContainer/>}/>
+                <Route path="/news" render={() => <News/>}/>
+                <Route path="/music" render={() => <Music/>}/>
+                <Route path="/settings" render={() => <Settings/>}/>
+                <Route path="/login" render={() => <LoginContainer/>}/>
+              </Content>
+              <Footer style={{textAlign: 'center'}}>Ant Design ©2023 Created by Ant UED</Footer>
+            </Layout>
           </Layout>
-        </Layout>
+        )
         : <Preloader/>
     );
   }
