@@ -93,7 +93,7 @@ class App extends React.Component<PropsType> {
             <Layout className="site-layout">
               <HeaderContainer/>
               <Content style={{margin: '10px'}}>
-                <Route path={"/"} render={() => <Redirect to={"/profile"}/>}/>
+                <Route exact path={"/"} render={() => <Redirect to={"/profile"}/>}/>
                 <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
                 <Route path="/dialogs" render={() => <DialogsContainer/>}/>
                 <Route path="/users" render={() => <UsersContainer/>}/>
