@@ -1,8 +1,8 @@
 .statusContainer {
-    color: black;
+  color: black;
 }
 .status {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }

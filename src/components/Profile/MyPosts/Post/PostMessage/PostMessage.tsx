@@ -1,16 +1,11 @@
-import React, {FC} from 'react';
+import React, { FC } from "react";
 
 type PostMessagePropsType = {
-  message: string
-}
+  message: string;
+};
 
-
-const PostMessage: FC<PostMessagePropsType> = ({message}) => {
-  return (
-    <p>
-      {message}
-    </p>
-  );
+const PostMessage: FC<PostMessagePropsType> = ({ message }) => {
+  return <p>{message}</p>;
 };
 
 export default PostMessage;

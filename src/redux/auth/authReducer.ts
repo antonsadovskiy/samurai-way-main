@@ -1,78 +1,81 @@
-import {authAPI, AuthUserDataType} from "../../api/authAPI";
-import {FormDataType} from "../../components/Login/LoginForm/LoginForm";
-import {AppThunk} from "../redux-store";
-import {stopSubmit} from "redux-form";
+import { authAPI, AuthUserDataType } from "../../api/authAPI";
+import { FormDataType } from "../../components/Login/LoginForm/LoginForm";
+import { AppThunk } from "../redux-store";
+import { stopSubmit } from "redux-form";
 
-type SetUserDataActionType = ReturnType<typeof setAuthUserData>
-type LogOutActionType = ReturnType<typeof logOutUser>
-export type AuthActionsType = SetUserDataActionType | LogOutActionType
+type SetUserDataActionType = ReturnType<typeof setAuthUserData>;
+type LogOutActionType = ReturnType<typeof logOutUser>;
+export type AuthActionsType = SetUserDataActionType | LogOutActionType;
 
 export type AuthStateType = {
-  id: number | null
-  email: string | null
-  login: string | null
-  isAuth: boolean
-}
+  id: number | null;
+  email: string | null;
+  login: string | null;
+  isAuth: boolean;
+};
 
 const initialState: AuthStateType = {
   id: null,
   email: null,
   login: null,
   isAuth: false,
-}
+};
 
-export const authReducer = (state: AuthStateType = initialState, action: AuthActionsType): AuthStateType => {
+export const authReducer = (
+  state: AuthStateType = initialState,
+  action: AuthActionsType
+): AuthStateType => {
   switch (action.type) {
-    case 'SET-USER-DATA':
-      return {...state, ...action.data}
+    case "SET-USER-DATA":
+      return { ...state, ...action.data };
     default:
-      return state
+      return state;
   }
-}
-
+};
 
 export const setAuthUserData = (data: AuthUserDataType) => {
-  return {type: 'SET-USER-DATA', data} as const
-}
+  return { type: "SET-USER-DATA", data } as const;
+};
 export const logOutUser = () => {
-  return {type: 'LOG-OUT'} as const
-}
+  return { type: "LOG-OUT" } as const;
+};
 
-
-export const getAuthUserDate = (): AppThunk =>
-  async (dispatch) => {
-    try {
-      const res = await authAPI.auth()
-      const {id, email, login} = res.data.data
-      if (res.data.resultCode === 0) {
-        dispatch(setAuthUserData({id, email, login, isAuth: true}))
-      }
-    } catch (e) {
-      console.error(e)
+export const getAuthUserDate = (): AppThunk => async (dispatch) => {
+  try {
+    const res = await authAPI.auth();
+    const { id, email, login } = res.data.data;
+    if (res.data.resultCode === 0) {
+      dispatch(setAuthUserData({ id, email, login, isAuth: true }));
     }
+  } catch (e) {
+    console.error(e);
   }
-export const loginUser = (data: FormDataType): AppThunk =>
+};
+export const loginUser =
+  (data: FormDataType): AppThunk =>
   async (dispatch) => {
     try {
-      const res = await authAPI.login(data)
+      const res = await authAPI.login(data);
       if (res.data.resultCode === 0) {
-        dispatch(getAuthUserDate())
+        dispatch(getAuthUserDate());
       } else {
-        const message = res.data.messages.length > 0 ? res.data.messages[0] : 'some error'
-        dispatch(stopSubmit('login', {_error: message}))
+        const message =
+          res.data.messages.length > 0 ? res.data.messages[0] : "some error";
+        dispatch(stopSubmit("login", { _error: message }));
       }
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
-  }
-export const logoutUser = (): AppThunk =>
-  async (dispatch) => {
-    try {
-      const res = await authAPI.logout()
-      if (res.data.resultCode === 0) {
-        dispatch(setAuthUserData({id: null, login: null, email: null, isAuth: false}))
-      }
-    } catch (e) {
-      console.error(e)
+  };
+export const logoutUser = (): AppThunk => async (dispatch) => {
+  try {
+    const res = await authAPI.logout();
+    if (res.data.resultCode === 0) {
+      dispatch(
+        setAuthUserData({ id: null, login: null, email: null, isAuth: false })
+      );
     }
+  } catch (e) {
+    console.error(e);
   }
+};

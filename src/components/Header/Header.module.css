@@ -1,18 +1,18 @@
 .loginBlock {
-    margin-right: 30px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  margin-right: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .authorisedUser {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    color: white;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: white;
 }
 .notAuthorisedUser {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
 }

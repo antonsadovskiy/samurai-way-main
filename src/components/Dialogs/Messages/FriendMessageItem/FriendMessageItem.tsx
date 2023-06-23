@@ -1,11 +1,12 @@
-import React, {FC} from 'react';
+import React, { FC } from "react";
 import s from "./FriendMessageItem.module.css";
-import {MessageItemPropsType} from "../../Dialogs";
-
+import { MessageItemPropsType } from "../../Dialogs";
 
 const FriendMessageItem: FC<MessageItemPropsType> = (props) => {
   return (
-    <div className={s.item}>{props.message}</div>
+    <div>
+      <div className={s.item}>{props.message}</div>
+    </div>
   );
 };
 

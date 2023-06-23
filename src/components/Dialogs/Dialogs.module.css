@@ -1,59 +1,60 @@
 .dialogsContainer {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .dialogItems {
-    padding: 10px;
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
+  padding: 10px;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: white;
 }
 
 .messageItems {
-    background-color: #222222;
-    border: 1px solid darkslategrey;
-    border-radius: 10px;
-    padding: 10px;
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 40px;
-
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 10px;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
 }
 
 .messages {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .friendMessages {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 
 .userMessages {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
 }
 
 .button {
-    background: none;
-    float: right;
+  background: none;
+  float: right;
 }
 
 .button img {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }

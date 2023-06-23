@@ -1,0 +1,18 @@
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.active {
+  background-color: black;
+}
+
+.user {
+  padding: 10px;
+  border: 1px solid rgba(256, 256, 256, 0);
+}
+
+.active .user {
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+}

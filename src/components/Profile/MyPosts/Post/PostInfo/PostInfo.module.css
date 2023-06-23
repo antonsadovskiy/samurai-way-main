@@ -1,22 +1,22 @@
 .info {
-    display: flex;
-    gap: 5px;
-    padding: 10px;
-    border-bottom: 1px dotted black;
-    font-weight: lighter;
-    color: rgb(210,210,210);
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+  border-bottom: 1px dotted black;
+  font-weight: lighter;
+  color: rgb(210, 210, 210);
 }
 .avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 .name {
-    margin: 0;
-    color: white;
+  margin: 0;
+  color: white;
 }
 .date {
-    margin: 0;
-    color: rgb(210,210,210);
-    font-size: 13px;
+  margin: 0;
+  color: rgb(210, 210, 210);
+  font-size: 13px;
 }

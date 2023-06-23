@@ -1,11 +1,11 @@
 .item {
-    border-radius: 10px;
-    padding: 5px;
-    width: auto;
-    height: auto;
-    background-color: #141414;
-    border: 1px solid darkslategrey;
-    color: rgb(210,210,210);
-    display: flex;
-    justify-content: flex-start;
+  border-radius: 10px;
+  padding: 8px;
+  width: fit-content;
+  height: auto;
+  background-color: lightgrey;
+  border: 1px solid darkslategrey;
+  color: black;
+  display: flex;
+  justify-content: flex-start;
 }

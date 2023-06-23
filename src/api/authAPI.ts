@@ -1,27 +1,25 @@
-import {FormDataType} from "../components/Login/LoginForm/LoginForm";
-import {instance} from "./instance";
-
+import { FormDataType } from "../components/Login/LoginForm/LoginForm";
+import { instance } from "./instance";
 
 export const authAPI = {
   auth() {
-    return instance.get(`auth/me`)
+    return instance.get(`auth/me`);
   },
   login(data: FormDataType) {
-    return instance
-      .post(`auth/login`, {
-        email: data.email,
-        password: data.password,
-        rememberMe: data.rememberMe
-      })
+    return instance.post(`auth/login`, {
+      email: data.email,
+      password: data.password,
+      rememberMe: data.rememberMe,
+    });
   },
   logout() {
-    return instance.delete(`auth/login`)
-  }
-}
+    return instance.delete(`auth/login`);
+  },
+};
 
 export type AuthUserDataType = {
-  id: number | null
-  email: string | null
-  login: string | null
-  isAuth: boolean
-}
+  id: number | null;
+  email: string | null;
+  login: string | null;
+  isAuth: boolean;
+};

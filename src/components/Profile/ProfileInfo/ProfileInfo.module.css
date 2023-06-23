@@ -1,16 +1,16 @@
 .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 500px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 500px;
+  width: 100%;
 }
-.backgroundImage{
-    width: 100%;
-    border-radius: 10px;
+.backgroundImage {
+  width: 100%;
+  border-radius: 10px;
 }
 .cardInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
 }
