@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { NavLink } from "react-router-dom";
 import s from "./Header.module.css";
+import containerStyle from "../../common/Container.module.css";
 import { Header } from "antd/lib/layout/layout";
 import { Button } from "antd";
 
@@ -15,19 +16,24 @@ const AppHeader: FC<HeaderPropsType> = (props) => {
 
   return (
     <Header>
-      <div className={s.loginBlock}>
-        {props.isAuth ? (
-          <div className={s.authorisedUser}>
-            <div>{props.login}</div>
-            <Button onClick={onClickLogOutHandler} type="primary">
-              log out
-            </Button>
+      <div className={containerStyle.container}>
+        <div className={s.loginBlock}>
+          <div style={{ color: "white" }}>All TOGETHER</div>
+          <div>
+            {props.isAuth ? (
+              <div className={s.authorisedUser}>
+                <div>{props.login}</div>
+                <Button onClick={onClickLogOutHandler} type="primary">
+                  log out
+                </Button>
+              </div>
+            ) : (
+              <NavLink to={"/login"} className={s.notAuthorisedUser}>
+                Log in
+              </NavLink>
+            )}
           </div>
-        ) : (
-          <NavLink to={"/login"} className={s.notAuthorisedUser}>
-            Log in
-          </NavLink>
-        )}
+        </div>
       </div>
     </Header>
   );

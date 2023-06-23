@@ -3,10 +3,6 @@ import s from "./Dialogs.module.css";
 import UserMessageItem from "./Messages/UserMessageItem/UserMessageItem";
 import FriendMessageItem from "./Messages/FriendMessageItem/FriendMessageItem";
 import { DialogsPropsType } from "./DialogsContainer";
-import {
-  maxLengthCreator,
-  minLengthCreator,
-} from "../../utils/validators/validators";
 import { Button, Input, List } from "antd";
 import DialogUser from "./DialogUser/DialogUser";
 import Compact from "antd/es/space/Compact";
@@ -32,6 +28,7 @@ const Dialogs: FC<DialogsPropsType> = (props) => {
     setMessage(e.currentTarget.value);
   const onSendMessageClick = () => {
     props.sendMessage(message);
+    setMessage("");
   };
 
   return (

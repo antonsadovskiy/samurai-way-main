@@ -2,13 +2,12 @@ import React, { ChangeEvent, FC, memo, useState } from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import { MyPostsPropsType } from "./MyPostsContainer";
-import { Button } from "antd";
+import { Button, Input } from "antd";
 import Compact from "antd/es/space/Compact";
-import TextArea from "antd/es/input/TextArea";
 
 const MyPosts: FC<MyPostsPropsType> = memo((props) => {
   const [postText, setPostText] = useState("");
-  const changeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setPostText(e.currentTarget.value);
   };
 
@@ -31,7 +30,9 @@ const MyPosts: FC<MyPostsPropsType> = memo((props) => {
   return (
     <div className={s.postsContainer}>
       <Compact style={{ width: "100%" }}>
-        <TextArea
+        <Input
+          showCount
+          maxLength={500}
           onChange={changeHandler}
           defaultValue="type something..."
           value={postText}

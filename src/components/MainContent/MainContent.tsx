@@ -11,7 +11,7 @@ import { Content } from "antd/es/layout/layout";
 
 const MainContent = () => {
   return (
-    <Content style={{ margin: "10px" }}>
+    <Content style={{ margin: "10px", minHeight: "88vh" }}>
       <Route exact path={"/"} render={() => <Redirect to={"/profile"} />} />
       <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
       <Route path="/dialogs" render={() => <DialogsContainer />} />

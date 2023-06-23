@@ -89,12 +89,12 @@ const Navbar: FC<NavbarPropsType> = (props) => {
 
   return (
     <Sider
+      theme="light"
       collapsible
       collapsed={props.collapsed}
       onCollapse={onCollapseHandler}
     >
-      <div style={{ height: 32, margin: 16 }} />
-      <Menu theme="dark" mode="inline" items={items} />
+      <Menu theme="light" mode="inline" items={items} />
     </Sider>
   );
 };

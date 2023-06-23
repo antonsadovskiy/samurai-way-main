@@ -1,8 +1,11 @@
 .loginBlock {
-  margin-right: 30px;
+  /*margin-right: 30px;*/
+  /*display: flex;*/
+  /*justify-content: flex-end;*/
+  /*align-items: center;*/
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  justify-content: space-between;
 }
 .authorisedUser {
   display: flex;

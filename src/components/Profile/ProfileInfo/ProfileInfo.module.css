@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 500px;
   width: 100%;
 }
 .backgroundImage {
@@ -11,6 +10,4 @@
 }
 .cardInfo {
   display: flex;
-  flex-direction: column;
-  gap: 50px;
 }

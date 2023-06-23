@@ -1,10 +1,9 @@
 import React from "react";
-import s from "./App.module.css";
 import { connect } from "react-redux";
+import containerStyle from "./common/Container.module.css";
 import { initializeApp } from "./redux/app/appReducer";
 import { AppStateType } from "./redux/redux-store";
 import Layout from "antd/es/layout";
-import { Footer } from "antd/es/layout/layout";
 import Preloader from "./components/common/Preloader/Preloader";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
@@ -31,17 +30,14 @@ class App extends React.Component<PropsType> {
 
   render() {
     return this.props.initialized ? (
-      <Layout className={s.layout}>
-        <Navbar
-          collapsed={this.state.collapsed}
-          onCollapseHandler={this.changeCollapse.bind(this)}
-        />
-        <Layout className="site-layout">
-          <HeaderContainer />
+      <Layout>
+        <HeaderContainer />
+        <Layout hasSider className={containerStyle.container}>
+          <Navbar
+            collapsed={this.state.collapsed}
+            onCollapseHandler={this.changeCollapse.bind(this)}
+          />
           <MainContent />
-          <Footer className={s.footer}>
-            Ant Design ©2023 Created by Ant UED
-          </Footer>
         </Layout>
       </Layout>
     ) : (

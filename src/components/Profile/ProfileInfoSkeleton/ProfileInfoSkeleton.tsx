@@ -12,7 +12,7 @@ const ProfileInfoSkeleton = () => {
         <Skeleton.Avatar
           shape={"square"}
           active
-          style={{ width: "500px", height: "116px" }}
+          style={{ width: "780px", height: "182px" }}
         />
       }
     >
@@ -26,7 +26,6 @@ const ProfileInfoSkeleton = () => {
             />
           }
         />
-        <Meta title={<Skeleton active paragraph={{ rows: 1 }} />} />
       </div>
     </Card>
   );
