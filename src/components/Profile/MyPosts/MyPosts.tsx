@@ -37,6 +37,7 @@ const MyPosts: FC<MyPostsPropsType> = memo((props) => {
           defaultValue="type something..."
           value={postText}
         />
+
         <Button disabled={!postText} type={"primary"} onClick={onAddPost}>
           Post
         </Button>

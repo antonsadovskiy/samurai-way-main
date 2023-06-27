@@ -3,7 +3,7 @@ import s from "./Dialogs.module.css";
 import UserMessageItem from "./Messages/UserMessageItem/UserMessageItem";
 import FriendMessageItem from "./Messages/FriendMessageItem/FriendMessageItem";
 import { DialogsPropsType } from "./DialogsContainer";
-import { Button, Input, List } from "antd";
+import { Button, Input } from "antd";
 import DialogUser from "./DialogUser/DialogUser";
 import Compact from "antd/es/space/Compact";
 
@@ -35,10 +35,9 @@ const Dialogs: FC<DialogsPropsType> = (props) => {
     <div>
       <div className={s.dialogsContainer}>
         <div className={s.dialogItems}>
-          <List
-            dataSource={props.dialogsPage.dialogUsers}
-            renderItem={(user) => <DialogUser user={user} />}
-          />
+          {props.dialogsPage.dialogUsers.map((user) => (
+            <DialogUser user={user} />
+          ))}
         </div>
         <div className={s.messageItems}>
           <div className={s.messages}>
