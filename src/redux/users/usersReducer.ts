@@ -51,24 +51,24 @@ export const usersReducer = (
   action: UsersActionsType
 ): UsersPageType => {
   switch (action.type) {
-    case "SET-IS-BUTTON-DISABLED":
+    case "USERS/SET-IS-BUTTON-DISABLED":
       return {
         ...state,
         isButtonDisabled: action.newIsButtonDisabled
           ? [...state.isButtonDisabled, action.userId]
           : state.isButtonDisabled.filter((userId) => userId !== action.userId),
       };
-    case "SET-IS-FETCHING":
+    case "USERS/SET-IS-FETCHING":
       return { ...state, isFetching: action.newIsFetching };
-    case "SET-PAGE-SIZE":
+    case "USERS/SET-PAGE-SIZE":
       return { ...state, pageSize: action.pageSize };
-    case "SET-USERS":
+    case "USERS/SET-USERS":
       return { ...state, users: [...action.users] };
-    case "SET-CURRENT-PAGE":
+    case "USERS/SET-CURRENT-PAGE":
       return { ...state, currentPage: action.currentPage };
-    case "SET-TOTAL-USERS-COUNT":
+    case "USERS/SET-TOTAL-USERS-COUNT":
       return { ...state, totalUsersCount: action.totalUsersCount };
-    case "CHANGE-FOLLOW":
+    case "USERS/CHANGE-FOLLOW":
       return {
         ...state,
         users: state.users.map((user) =>
@@ -87,44 +87,44 @@ export const setIsButtonDisabled = (
   newIsButtonDisabled: boolean
 ) => {
   return {
-    type: "SET-IS-BUTTON-DISABLED",
+    type: "USERS/SET-IS-BUTTON-DISABLED",
     userId,
     newIsButtonDisabled,
   } as const;
 };
 export const setIsFetching = (newIsFetching: boolean) => {
   return {
-    type: "SET-IS-FETCHING",
+    type: "USERS/SET-IS-FETCHING",
     newIsFetching,
   } as const;
 };
 export const setUsers = (users: Array<UserType>) => {
   return {
-    type: "SET-USERS",
+    type: "USERS/SET-USERS",
     users,
   } as const;
 };
 export const setPageSize = (pageSize: number) => {
   return {
-    type: "SET-PAGE-SIZE",
+    type: "USERS/SET-PAGE-SIZE",
     pageSize,
   } as const;
 };
 export const setCurrentPage = (currentPage: number) => {
   return {
-    type: "SET-CURRENT-PAGE",
+    type: "USERS/SET-CURRENT-PAGE",
     currentPage,
   } as const;
 };
 export const setTotalUsersCount = (totalUsersCount: number) => {
   return {
-    type: "SET-TOTAL-USERS-COUNT",
+    type: "USERS/SET-TOTAL-USERS-COUNT",
     totalUsersCount,
   } as const;
 };
 export const changeFollow = (userId: number, follow: boolean) => {
   return {
-    type: "CHANGE-FOLLOW",
+    type: "USERS/CHANGE-FOLLOW",
     userId,
     follow,
   } as const;

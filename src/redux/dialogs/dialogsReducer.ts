@@ -42,7 +42,7 @@ export const dialogsReducer = (
   action: DialogsActionsType
 ): DialogPageType => {
   switch (action.type) {
-    case "ADD-MESSAGE":
+    case "DIALOGS/ADD-MESSAGE":
       const newMessage: MessageItemType = {
         id: 3,
         message: action.newMessage,
@@ -57,5 +57,5 @@ export const dialogsReducer = (
 };
 
 export const addMessageActionCreator = (newMessage: string) => {
-  return { type: "ADD-MESSAGE", newMessage } as const;
+  return { type: "DIALOGS/ADD-MESSAGE", newMessage } as const;
 };

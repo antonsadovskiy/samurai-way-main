@@ -7,9 +7,11 @@ import ProfileInfoSkeleton from "./ProfileInfoSkeleton/ProfileInfoSkeleton";
 import MyPostsSkeleton from "./MyPostsSkeleton/MyPostsSkeleton";
 
 type ProfilePropsType = {
+  isOwner: boolean;
   profile: UserProfileType | null;
   status: string;
   updateStatus: (newStatus: string) => void;
+  updateAvatar: (file: File) => void;
 };
 
 const Profile: FC<ProfilePropsType> = (props) => {
@@ -20,9 +22,11 @@ const Profile: FC<ProfilePropsType> = (props) => {
           <ProfileInfoSkeleton />
         ) : (
           <ProfileInfo
+            isOwner={props.isOwner}
             profile={props.profile}
             status={props.status}
             updateStatus={props.updateStatus}
+            updateAvatar={props.updateAvatar}
           />
         )}
       </div>

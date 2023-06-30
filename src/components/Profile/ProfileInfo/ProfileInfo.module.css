@@ -11,3 +11,9 @@
 .cardInfo {
   display: flex;
 }
+
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

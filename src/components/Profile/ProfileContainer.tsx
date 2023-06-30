@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import {
   getProfile,
   getStatus,
+  updateAvatar,
   updateStatus,
   UserProfileType,
 } from "../../redux/profile/profileReducer";
@@ -25,12 +26,27 @@ type mapDispatchToPropsType = {
   getProfile: (userId: string) => void;
   getStatus: (userId: string) => void;
   updateStatus: (newStatus: string) => void;
+  updateAvatar: (file: File) => void;
 };
 export type ProfileAPIComponent = mapStateToPropsType & mapDispatchToPropsType;
 type PropsType = RouteComponentProps<PathParamsType> & ProfileAPIComponent;
 
 class ProfileContainer extends React.Component<PropsType> {
   componentDidMount() {
+    this.refreshProfile();
+  }
+
+  componentDidUpdate(
+    prevProps: Readonly<PropsType>,
+    prevState: Readonly<{}>,
+    snapshot?: any
+  ) {
+    if (prevProps.match.params.userId !== this.props.match.params.userId) {
+      this.refreshProfile();
+    }
+  }
+
+  refreshProfile() {
     let userId = this.props.match.params.userId;
     if (!userId && this.props.authorizedUserId) {
       userId = this.props.authorizedUserId.toString();
@@ -46,9 +62,11 @@ class ProfileContainer extends React.Component<PropsType> {
     return (
       <Profile
         {...this.props}
+        isOwner={!this.props.match.params.userId}
         profile={this.props.profile}
         status={this.props.status}
         updateStatus={this.props.updateStatus}
+        updateAvatar={this.props.updateAvatar}
       />
     );
   }
@@ -64,7 +82,12 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 };
 
 export default compose<ComponentType>(
-  connect(mapStateToProps, { getProfile, getStatus, updateStatus }),
+  connect(mapStateToProps, {
+    getProfile,
+    getStatus,
+    updateStatus,
+    updateAvatar,
+  }),
   withRouter,
   withAuthRedirect
 )(ProfileContainer);

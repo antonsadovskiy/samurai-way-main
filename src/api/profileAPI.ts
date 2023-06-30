@@ -7,11 +7,29 @@ export const profileAPI = {
   getStatus(userId: string) {
     return instance.get(`profile/status/${userId}`);
   },
-  updateStatus(newStatus: string) {
+  updateStatus(status: string) {
     return instance
-      .put(`profile/status`, {
-        status: newStatus,
+      .put<ResponseType<{}>>(`profile/status`, { status })
+      .then((res) => res.data);
+  },
+  updateAvatar(image: File) {
+    const formData = new FormData();
+    formData.append("image", image);
+    return instance
+      .put<ResponseType<UpdateAvatarResponseType>>(`profile/photo`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       })
       .then((res) => res.data);
   },
+};
+
+type ResponseType<T> = {
+  resultCode: number;
+  messages: Array<string>;
+  data: T;
+};
+
+type UpdateAvatarResponseType = {
+  small: string;
+  large: string;
 };

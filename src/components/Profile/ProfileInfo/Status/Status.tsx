@@ -11,6 +11,7 @@ import { EditOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
 
 type StatusPropsType = {
+  isOwner: boolean;
   status: string;
   updateStatus: (newStatus: string) => void;
 };
@@ -52,7 +53,9 @@ const Status: FC<StatusPropsType> = (props) => {
       ) : (
         <div className={s.status}>
           <span>{props.status || "no status"}</span>
-          <Button onClick={activateEditMode} icon={<EditOutlined />} />
+          {props.isOwner && (
+            <Button onClick={activateEditMode} icon={<EditOutlined />} />
+          )}
         </div>
       )}
     </div>

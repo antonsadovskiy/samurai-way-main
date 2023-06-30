@@ -39,12 +39,14 @@ export type ProfilePageType = {
 type SetUserProfileActionType = ReturnType<typeof setUserProfile>;
 type AddPostActionType = ReturnType<typeof addPostActionCreator>;
 type SetUserStatusActionType = ReturnType<typeof setUserStatus>;
+type SetUserAvatarActionType = ReturnType<typeof setUserAvatar>;
 
 export type ProfileActionsType =
   | SetUserProfileActionType
   | AddPostActionType
   | DialogsActionsType
-  | SetUserStatusActionType;
+  | SetUserStatusActionType
+  | SetUserAvatarActionType;
 
 const initialState: ProfilePageType = {
   profile: null,
@@ -73,9 +75,9 @@ export const profileReducer = (
   action: ProfileActionsType
 ): ProfilePageType => {
   switch (action.type) {
-    case "SET-USER-PROFILE":
+    case "PROFILE/SET-USER-PROFILE":
       return { ...state, profile: action.profile };
-    case "ADD-POST":
+    case "PROFILE/ADD-POST":
       const newPost: PostType = {
         id: 4,
         date: "11:08 28 Jul",
@@ -84,21 +86,39 @@ export const profileReducer = (
         message: action.newPostText,
       };
       return { ...state, posts: [newPost, ...state.posts] };
-    case "SET-USER-STATUS":
+    case "PROFILE/SET-USER-STATUS":
       return { ...state, status: action.status };
+    case "PROFILE/SET-USER-AVATAR":
+      if (state.profile) {
+        return {
+          ...state,
+          profile: {
+            ...state.profile,
+            photos: action.photos,
+          },
+        };
+      } else {
+        return state;
+      }
     default:
       return state;
   }
 };
 
 export const setUserProfile = (profile: UserProfileType) => {
-  return { type: "SET-USER-PROFILE", profile } as const;
+  return { type: "PROFILE/SET-USER-PROFILE", profile } as const;
 };
 export const addPostActionCreator = (newPostText: string) => {
-  return { type: "ADD-POST", newPostText } as const;
+  return { type: "PROFILE/ADD-POST", newPostText } as const;
 };
 export const setUserStatus = (status: string) => {
-  return { type: "SET-USER-STATUS", status } as const;
+  return { type: "PROFILE/SET-USER-STATUS", status } as const;
+};
+export const setUserAvatar = (photos: { small: string; large: string }) => {
+  return {
+    type: "PROFILE/SET-USER-AVATAR",
+    photos,
+  } as const;
 };
 
 export const getProfile =
@@ -132,4 +152,18 @@ export const updateStatus =
     } catch (e) {
       console.error(e);
     }
+  };
+export const updateAvatar =
+  (newAvatar: File): AppThunk =>
+  async (dispatch) => {
+    try {
+      const res = await profileAPI.updateAvatar(newAvatar);
+      if (res.resultCode === 0) {
+        // if (res.data.small && res.data.large) {
+        dispatch(setUserAvatar(res.data));
+        // }
+      } else {
+        console.log(res.messages[0]);
+      }
+    } catch (e) {}
   };

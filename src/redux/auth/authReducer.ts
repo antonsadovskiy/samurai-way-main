@@ -26,7 +26,7 @@ export const authReducer = (
   action: AuthActionsType
 ): AuthStateType => {
   switch (action.type) {
-    case "SET-USER-DATA":
+    case "AUTH/SET-USER-DATA":
       return { ...state, ...action.data };
     default:
       return state;
@@ -34,10 +34,10 @@ export const authReducer = (
 };
 
 export const setAuthUserData = (data: AuthUserDataType) => {
-  return { type: "SET-USER-DATA", data } as const;
+  return { type: "AUTH/SET-USER-DATA", data } as const;
 };
 export const logOutUser = () => {
-  return { type: "LOG-OUT" } as const;
+  return { type: "AUTH/LOG-OUT" } as const;
 };
 
 export const getAuthUserDate = (): AppThunk => async (dispatch) => {
