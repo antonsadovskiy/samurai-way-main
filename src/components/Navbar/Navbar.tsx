@@ -8,6 +8,7 @@ import {
   HomeOutlined,
   MessageOutlined,
   SettingOutlined,
+  TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 
@@ -70,7 +71,7 @@ const items: MenuItem[] = [
       <SettingOutlined />
     </NavItem>
   ),
-  getItem("Friends", "7", <UserOutlined />, [
+  getItem("Friends", "7", <TeamOutlined />, [
     getItem("Tom", "friend1"),
     getItem("Bill", "friend2"),
     getItem("Alex", "friend3"),
@@ -86,7 +87,6 @@ const Navbar: FC<NavbarPropsType> = (props) => {
   const onCollapseHandler = (value: boolean) => {
     props.onCollapseHandler(value);
   };
-
   return (
     <Sider
       theme="light"

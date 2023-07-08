@@ -5,50 +5,22 @@
     gap: 10px;
 }
 
-.dialogItems {
+.users {
     padding: 10px;
     width: 100%;
     display: flex;
     gap: 10px;
-    border: 1px solid lightgrey;
     border-radius: 10px;
     background-color: white;
 }
-
-.messageItems {
-    background-color: white;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    padding: 10px;
-    width: 65%;
+.messageZone {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 40px;
+    gap: 10px;
 }
-
 .messages {
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+    width: 30%;
 }
 
-.friendMessages {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    width: 100%;
-}
-
-.userMessages {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    width: 100%;
-}
 
 .button {
     background: none;

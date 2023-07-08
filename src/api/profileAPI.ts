@@ -8,18 +8,19 @@ export const profileAPI = {
     return instance.get(`profile/status/${userId}`);
   },
   updateStatus(status: string) {
-    return instance
-      .put<ResponseType<{}>>(`profile/status`, { status })
-      .then((res) => res.data);
+    return instance.put<ResponseType<{}>>(`profile/status`, { status });
   },
   updateAvatar(image: File) {
     const formData = new FormData();
     formData.append("image", image);
-    return instance
-      .put<ResponseType<UpdateAvatarResponseType>>(`profile/photo`, formData, {
+
+    return instance.put<ResponseType<{ photos: UpdateAvatarResponseType }>>(
+      `profile/photo`,
+      formData,
+      {
         headers: { "Content-Type": "multipart/form-data" },
-      })
-      .then((res) => res.data);
+      }
+    );
   },
 };
 

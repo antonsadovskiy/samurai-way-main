@@ -11,8 +11,6 @@ type AvatarPropsType = {
 };
 
 const Avatar: FC<AvatarPropsType> = (props) => {
-  debugger;
-
   return (
     <div className={s.avatar}>
       {props.photos.large ? (

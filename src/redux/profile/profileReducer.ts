@@ -2,18 +2,20 @@ import { DialogsActionsType } from "../dialogs/dialogsReducer";
 import { AppThunk } from "../redux-store";
 import { profileAPI } from "../../api/profileAPI";
 
+export type ContactsType = {
+  facebook: string;
+  website: string;
+  vk: string;
+  twitter: string;
+  instagram: string;
+  youtube: string;
+  github: string;
+  mainLink: string;
+};
+
 export type UserProfileType = {
   aboutMe: string;
-  contacts: {
-    facebook: string;
-    website: string;
-    vk: string;
-    twitter: string;
-    instagram: string;
-    youtube: string;
-    github: string;
-    mainLink: string;
-  };
+  contacts: ContactsType;
   lookingForAJob: boolean;
   lookingForAJobDescription: string;
   fullName: string;
@@ -115,10 +117,7 @@ export const setUserStatus = (status: string) => {
   return { type: "PROFILE/SET-USER-STATUS", status } as const;
 };
 export const setUserAvatar = (photos: { small: string; large: string }) => {
-  return {
-    type: "PROFILE/SET-USER-AVATAR",
-    photos,
-  } as const;
+  return { type: "PROFILE/SET-USER-AVATAR", photos } as const;
 };
 
 export const getProfile =
@@ -146,7 +145,7 @@ export const updateStatus =
   async (dispatch) => {
     try {
       const res = await profileAPI.updateStatus(newStatus);
-      if (res.resultCode === 0) {
+      if (res.data.resultCode === 0) {
         dispatch(setUserStatus(newStatus));
       }
     } catch (e) {
@@ -158,12 +157,10 @@ export const updateAvatar =
   async (dispatch) => {
     try {
       const res = await profileAPI.updateAvatar(newAvatar);
-      if (res.resultCode === 0) {
-        // if (res.data.small && res.data.large) {
-        dispatch(setUserAvatar(res.data));
-        // }
+      if (res.data.resultCode === 0) {
+        dispatch(setUserAvatar(res.data.data.photos));
       } else {
-        console.log(res.messages[0]);
+        console.log(res.data.messages[0]);
       }
     } catch (e) {}
   };

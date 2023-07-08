@@ -16,6 +16,32 @@ beforeEach(() => {
       { id: 4, name: "Diana", avatar: avatar },
       { id: 5, name: "Alex", avatar: avatar },
     ],
+    dialogs: [
+      {
+        id: 1,
+        name: "Sasha",
+        avatar,
+        message: "Do you wanna hang out?",
+      },
+      {
+        id: 2,
+        name: "Andrey",
+        avatar,
+        message: "We need to talk",
+      },
+      {
+        id: 3,
+        name: "Masha",
+        avatar,
+        message: "I cheated on you",
+      },
+      {
+        id: 4,
+        name: "Kirill",
+        avatar,
+        message: "Hey, how are you?",
+      },
+    ],
     userMessages: [
       { id: 1, message: "hello" },
       { id: 2, message: "how are you?" },

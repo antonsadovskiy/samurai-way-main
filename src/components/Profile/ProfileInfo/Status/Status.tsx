@@ -44,6 +44,7 @@ const Status: FC<StatusPropsType> = (props) => {
     <div className={s.statusContainer}>
       {editMode ? (
         <Input
+          width={"100%"}
           value={status}
           onBlur={deactivateEditMode}
           onChange={onChangeHandler}

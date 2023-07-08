@@ -4,13 +4,15 @@ export type MessageItemType = {
   id: number;
   message: string;
 };
-export type DialogItemType = {
+export type UserType = {
   id: number;
   name: string;
   avatar: string;
 };
+export type DialogType = UserType & { message: string };
 export type DialogPageType = {
-  dialogUsers: Array<DialogItemType>;
+  dialogUsers: Array<UserType>;
+  dialogs: Array<DialogType>;
   userMessages: Array<MessageItemType>;
   friendMessages: Array<MessageItemType>;
 };
@@ -20,11 +22,27 @@ export type DialogsActionsType = AddMessageActionType;
 
 const initialState: DialogPageType = {
   dialogUsers: [
-    { id: 1, name: "Anton", avatar: avatar },
-    { id: 2, name: "Julia", avatar: avatar },
-    { id: 3, name: "Sasha", avatar: avatar },
-    { id: 4, name: "Diana", avatar: avatar },
-    { id: 5, name: "Alex", avatar: avatar },
+    { id: 1, name: "Anton", avatar },
+    { id: 2, name: "Julia", avatar },
+    { id: 3, name: "Sasha", avatar },
+    { id: 4, name: "Diana", avatar },
+    { id: 5, name: "Alex", avatar },
+  ],
+  dialogs: [
+    {
+      id: 1,
+      name: "Sasha",
+      avatar,
+      message: "Do you wanna hang out?",
+    },
+    { id: 2, name: "Andrey", avatar, message: "We need to talk" },
+    { id: 3, name: "Masha", avatar, message: "I cheated on you" },
+    {
+      id: 4,
+      name: "Kirill",
+      avatar,
+      message: "Hey, how are you?",
+    },
   ],
   userMessages: [
     { id: 1, message: "hello" },

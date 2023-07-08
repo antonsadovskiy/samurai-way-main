@@ -1,12 +1,12 @@
 import React, { FC } from "react";
 import s from "./DialogUser.module.css";
 import { NavLink } from "react-router-dom";
-import { DialogItemType } from "../../../redux/dialogs/dialogsReducer";
+import { UserType } from "../../../redux/dialogs/dialogsReducer";
 import { Avatar } from "antd/lib";
 import UserName from "./UserName/UserName";
 
 type DialogUserPropsType = {
-  user: DialogItemType;
+  user: UserType;
 };
 
 const DialogUser: FC<DialogUserPropsType> = ({ user }) => {
@@ -14,7 +14,7 @@ const DialogUser: FC<DialogUserPropsType> = ({ user }) => {
     <NavLink
       activeClassName={`${s.active} ${s.link}`}
       className={s.link}
-      to={"/dialogs/" + user.id}
+      to={"/dialogs/" + "3000"}
     >
       <div className={s.user}>
         <Avatar

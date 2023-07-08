@@ -4,8 +4,12 @@ import backgroundImage from "../../../asssets/images/156963-anime-art-oblako-atm
 import Avatar from "./Avatar/Avatar";
 import { UserProfileType } from "../../../redux/profile/profileReducer";
 import Status from "./Status/Status";
-import { Card } from "antd";
+import { Button, Card } from "antd";
 import Meta from "antd/es/card/Meta";
+import Upload from "antd/lib/upload";
+import { UploadOutlined } from "@ant-design/icons";
+import Contacts from "./Contacts/Contacts";
+import LookingForAJob from "./LookingForAJob/LookingForAJob";
 
 type ProfileInfoPropsType = {
   isOwner: boolean;
@@ -29,17 +33,29 @@ const ProfileInfo: FC<ProfileInfoPropsType> = (props) => {
         <div className={s.avatarContainer}>
           <Meta avatar={<Avatar photos={props.profile.photos} />} />
           {props.isOwner && (
-            <input type={"file"} onChange={changeAvatarHandler} />
+            <Upload>
+              <Button icon={<UploadOutlined />}>Upload</Button>
+            </Upload>
           )}
         </div>
         <Meta
           title={props.profile.fullName}
           description={
-            <Status
-              status={props.status}
-              isOwner={props.isOwner}
-              updateStatus={props.updateStatus}
-            />
+            <div className={s.info}>
+              <Status
+                status={props.status}
+                isOwner={props.isOwner}
+                updateStatus={props.updateStatus}
+              />
+              <LookingForAJob
+                lookingForAJob={props.profile.lookingForAJob}
+                description={props.profile.lookingForAJobDescription}
+              />
+              <Contacts
+                isOwner={props.isOwner}
+                contacts={props.profile.contacts}
+              />
+            </div>
           }
         />
       </div>

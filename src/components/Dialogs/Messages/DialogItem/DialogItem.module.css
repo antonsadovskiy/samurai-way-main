@@ -1,0 +1,43 @@
+.dialogItem {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    background-color: white;
+    gap: 10px;
+    transition: all 0.4s ease;
+}
+.dialogItem:hover {
+    background-color: #d2d2d2;
+}
+
+.dialogItem:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.dialogItem:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+}
+
+.name {
+    color: black;
+    font-size: 16px;
+}
+
+.message {
+    color: black;
+    opacity: 0.5;
+}
+
+.info {
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
